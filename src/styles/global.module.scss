@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap");
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #f4f0ed;
+}
+
+@font-face {
+  font-family: "dahlia";
+  src: url("../UI/Fonts/Dahlia-Regular.woff2") format("woff2");
+}
+
+.loader {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f4f0ed;
+
+    h1 {
+      font-size: 2vw;
+      font-family: dahlia;
+      letter-spacing: 0.1rem;
+      font-weight: 100;
+    }
+  }
+  &__absolute {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f4f0ed;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,14 @@
+.home {
+  &__header {
+    padding-top: 5rem;
+    line-height: 1.1;
+    font-family: dahlia;
+    font-size: 18rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__overlay {
+    overflow: hidden;
+  }
+}

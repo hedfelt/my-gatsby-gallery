@@ -1,0 +1,62 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: "Open Sans";
+  // text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 400;
+  align-items: flex-end;
+  padding: 0rem 1rem 1.5rem 1rem;
+
+  &__icons {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 1rem 0rem 1rem;
+  }
+
+  &__links {
+    display: flex;
+    padding: 0rem 1.5rem 0rem 1rem;
+  }
+  &__home,
+  &__about,
+  &__works,
+  &__contact {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    padding: 0rem 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    &__icons {
+      padding: 2rem 1rem;
+    }
+    &__facebook {
+      width: 2rem;
+      height: 2rem;
+    }
+    &__instagram {
+      width: 2rem;
+      height: 2rem;
+    }
+    &__pinterest {
+      width: 2rem;
+      height: 2rem;
+    }
+    &__links {
+      flex-direction: column;
+      font-size: 1.3rem;
+      align-items: center;
+      padding: 2rem 0rem;
+    }
+    &__copyright {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+.contact {
+  display: flex;
+  justify-content: space-evenly;
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+  }
+  &__wrapper {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10rem;
+  }
+  &__header {
+    font-family: "dahlia";
+    font-size: 70px;
+    line-height: 84px;
+    color: #5f8ac9;
+    font-style: normal;
+    font-weight: normal;
+  }
+  &__subheader {
+    font-family: Open Sans;
+    // line-height: 19px;
+    padding-top: 4rem;
+
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 23px;
+  }
+
+  &__form {
+    padding-left: 3rem;
+    padding-top: 80px;
+    padding-bottom: 3rem;
+  }
+}
+
+.formModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+
+  &__box {
+    max-width: 30rem;
+    height: 20rem;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: white;
+    opacity: 1;
+    border-radius: 10px;
+    // text-align: center;
+  }
+  &__button {
+    color: black;
+    cursor: pointer;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  &__text {
+    color: black;
+    font-weight: bold;
+  }
+}
