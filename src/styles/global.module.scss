@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-color: #f4f0ed;
+  background-color: #f6eee3;
 }
 
 @font-face {
@@ -18,7 +20,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #f4f0ed;
+    background-color: #f6eee3;
 
     h1 {
       font-size: 2vw;
@@ -33,7 +35,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #f4f0ed;
+    background-color: #f6eee3;
     z-index: 1;
   }
 }
