@@ -161,10 +161,10 @@ const Modal = ({ showModal, setShowModal }) => {
                 <Link
                   onClick={modalRemove}
                   className="modal__link"
-                  to="/blogpost"
+                  to="/blog"
                   activeStyle={{ color: "rgb(178, 147, 244)" }}
                 >
-                  Articles
+                  BLOG
                 </Link>
               </motion.div>
             </div>
