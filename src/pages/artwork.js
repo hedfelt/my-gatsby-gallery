@@ -84,7 +84,7 @@ export const query = graphql`
       nodes {
         artwork {
           asset {
-            gatsbyImageData(placeholder: BLURRED)
+            gatsbyImageData(aspectRatio: 1, placeholder: DOMINANT_COLOR)
           }
         }
         slug {

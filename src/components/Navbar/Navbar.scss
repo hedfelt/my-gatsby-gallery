@@ -3,33 +3,27 @@
   display: flex;
   justify-content: space-between;
   height: 5rem;
-  padding-top: 2rem;
   position: fixed;
   z-index: 1000;
-  &__name {
-    font-family: dahlia;
-    text-align: center;
-    font-size: 2rem;
-    padding: 0rem 2rem;
-    color: black;
-    z-index: 1000;
-    background-color: transparent;
-    &--open {
-      background-color: transparent;
+  font-family: "Comfortaa", cursive;
+  font-weight: 600;
 
-      font-family: dahlia;
-      text-align: center;
-      font-size: 2rem;
-      padding: 0rem 2rem;
-      color: black;
+  &__name {
+    padding: 2rem 1.7rem;
+    z-index: 1000;
+    &--open {
+      padding: 2rem 1.7rem;
       z-index: 1000;
     }
   }
   &__iconWrapper {
-    padding: 0rem 2rem;
+    font-size: 1.2rem;
     background: transparent;
     z-index: 1000;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 2rem 5.3rem 0rem 0rem;
   }
 
   &--open {
@@ -39,7 +33,6 @@
   &--closed {
     transition-duration: 0.7s;
     transition-timing-function: ease-in-out;
-    // background: #7c978f;
   }
 
   &__hamburger {
@@ -50,12 +43,13 @@
     align-items: center;
     flex-direction: column;
     background-color: transparent;
+    padding-right: 1rem;
   }
 
   &__upperbar,
   &__lowerbar {
-    width: 2rem;
-    height: 0.2rem;
+    width: 1.8rem;
+    height: 0.1rem;
     background: black;
     margin: 0.3rem;
   }
