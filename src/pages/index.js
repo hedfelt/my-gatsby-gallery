@@ -9,7 +9,6 @@ const IndexPage = ({ data }) => {
   const frontpage = data.sanityLandingpage;
 
   const image = data.sanityLandingpage.images[0].artwork.asset.gatsbyImageData;
-  console.log(image);
 
   return (
     <div className={styles.home__header}>
