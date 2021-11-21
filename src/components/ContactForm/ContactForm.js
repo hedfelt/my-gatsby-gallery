@@ -93,7 +93,7 @@ const ContactForm = (props) => {
             first name
           </label> */}
         <input
-          placeholder="Your Name"
+          placeholder="Name"
           className={nameInputClasses}
           type="text"
           id="firstname"
@@ -114,7 +114,7 @@ const ContactForm = (props) => {
           email
         </label> */}
         <input
-          placeholder="Your Email"
+          placeholder="Email"
           className={emailInputClasses}
           type="email"
           id="email"
@@ -134,9 +134,9 @@ const ContactForm = (props) => {
         <textarea
           style={{
             fontFamily: "Open Sans",
-            // fontWeight: "700",
+            height: "10rem",
           }}
-          placeholder="Share your thoughts"
+          placeholder="Message"
           className={messageInputClasses}
           maxlenght="500"
           onChange={messageChangedHandler}
