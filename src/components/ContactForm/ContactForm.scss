@@ -80,7 +80,7 @@
     font-size: var(--fs-800);
 
     &::placeholder {
-      color: #53624e;
+      color: black;
     }
     &:focus {
       outline: none;
@@ -93,7 +93,7 @@
   }
   &__button {
     margin: 3rem auto;
-    background-color: #53624e;
+    background-color: #black;
     color: transparent;
     width: 20vw;
     height: 58px;

@@ -23,12 +23,7 @@ const Icons = () => {
       <div className="smIcons__icon">
         <Icon icon={instagram} />
       </div>
-      <div className="smIcons__icon">
-        <Icon icon={pinterest} />
-      </div>
-      <div className="smIcons__icon">
-        <Icon icon={twitter} />
-      </div>
+
       <div className="smIcons__icon">
         <Icon icon={mail} />
       </div>

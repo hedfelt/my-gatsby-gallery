@@ -55,7 +55,7 @@ const Navbar = ({ showModal, iconChange }) => {
       className={showModal ? "navbar navbar--closed" : "navbar navbar--open"}
     >
       <div className={showModal ? "navbar__name--open" : "navbar__name"}>
-        <Logo />
+        <Logo fill={"black"} />
       </div>
 
       <div className="navbar__iconWrapper">

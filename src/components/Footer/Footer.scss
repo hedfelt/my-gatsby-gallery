@@ -1,23 +1,57 @@
 .footer {
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  font-family: "Open Sans";
-  // text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 400;
-  align-items: flex-end;
-  padding: 0rem 1rem 1.5rem 1rem;
-
-  &__icons {
+  font-family: "Noto sans";
+  padding-top: 5rem;
+  &__wrapper {
+    padding: 2rem 0rem;
     display: flex;
     flex-direction: column;
-    padding: 0rem 1rem 0rem 1rem;
+    align-items: center;
+    justify-content: center;
+    // background-color: #1f1f1f;k
+    // color: #fbf7f2;
+    color: rgb(0, 0, 0);
   }
 
-  &__links {
+  &__logowrapper {
+    width: 100%;
     display: flex;
-    padding: 0rem 1.5rem 0rem 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  &__linewrapper {
+    width: 25%;
+  }
+  &__logo {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+  }
+
+  &__linkswrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 2rem 0rem;
+  }
+  &__linksgroups {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 2;
+    width: 30%;
+    padding: 2rem 0rem;
+  }
+  &__icons {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-around;
+  }
+  &__icon {
+    width: 7%;
   }
   &__home,
   &__about,
@@ -25,38 +59,21 @@
   &__contact {
     cursor: pointer;
     text-decoration: none;
-    color: black;
-    padding: 0rem 1rem;
+    color: #000;
+    padding: 1rem;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .footer {
+  &__verticalline {
+    height: 5rem;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+  }
+  &__bottom {
+    padding: 2rem 0rem;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    &__icons {
-      padding: 2rem 1rem;
-    }
-    &__facebook {
-      width: 2rem;
-      height: 2rem;
-    }
-    &__instagram {
-      width: 2rem;
-      height: 2rem;
-    }
-    &__pinterest {
-      width: 2rem;
-      height: 2rem;
-    }
-    &__links {
-      flex-direction: column;
-      font-size: 1.3rem;
-      align-items: center;
-      padding: 2rem 0rem;
-    }
-    &__copyright {
-      font-size: 1.2rem;
-    }
+    justify-content: center;
+    font-size: 1rem;
   }
 }
