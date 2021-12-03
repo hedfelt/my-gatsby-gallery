@@ -13,7 +13,7 @@ const ContactPage = () => {
     animate: {
       x: 0,
       transition: {
-        delayChildren: 0.6,
+        delayChildren: 1,
         staggerChildren: 0.04,
         staggerDirection: -1,
       },
