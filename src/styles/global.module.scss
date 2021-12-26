@@ -2,40 +2,34 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  background-color: #fbf7f2;
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @font-face {
   font-family: "dahlia";
   src: url("../UI/Fonts/Dahlia-Regular.woff2") format("woff2");
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #fbf7f2;
-  border-radius: 10px;
+:root {
+  --main-color: #3664e8;
+  --background: #fbf7f2;
+  --black: #09090c;
+  --grey: #a4b3bc;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
 }
 
 .loader {
@@ -59,7 +53,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #fbf7f2;
+    background-color: var(background);
     z-index: 1;
   }
 }
