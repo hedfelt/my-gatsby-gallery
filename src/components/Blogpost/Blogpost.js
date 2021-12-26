@@ -1,10 +1,18 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
-import * as styles from "./blogpost.scss";
+import * as styles from "./Blogpost.scss";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion";
 
-const blogpost = ({ index, width, blog, slug, image, published, title }) => {
+export default function Blogpost({
+  index,
+  width,
+  // blog,
+  slug,
+  image,
+  published,
+  title,
+}) {
   const titleMotion = {
     rest: {
       y: 0,
@@ -74,7 +82,6 @@ const blogpost = ({ index, width, blog, slug, image, published, title }) => {
       intial="rest"
       whileHover="hover"
       animate="rest"
-      //   key={index}
       className={styles.blogpost__individualholder}
       style={{ width: width }}
     >
@@ -96,12 +103,6 @@ const blogpost = ({ index, width, blog, slug, image, published, title }) => {
         <div className={styles.blogpost__verticalline}></div>
         <div className="">8 min</div>
         <div className={styles.blogpost__verticalline}></div>
-
-        {/* {blog.tags.map((tag, index) => (
-          <div key={index} className="">
-            {(index ? ", " : "") + tag.tags}
-          </div>
-        ))} */}
       </div>
       <motion.svg
         height="5%"
@@ -123,6 +124,4 @@ const blogpost = ({ index, width, blog, slug, image, published, title }) => {
       </TransitionLink>
     </motion.div>
   );
-};
-
-export default blogpost;
+}

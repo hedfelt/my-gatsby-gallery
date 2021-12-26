@@ -6,7 +6,7 @@ import TransitionLink from "gatsby-plugin-transition-link";
 import { TransitionState } from "gatsby-plugin-transition-link";
 import gsap from "gsap";
 
-const artwork = ({ data, transitionStatus }) => {
+export default function Artwork({ data, transitionStatus }) {
   const arts = data.allSanityArt.nodes;
   useEffect(() => {
     console.log("ArtworksPage", transitionStatus);
@@ -74,9 +74,7 @@ const artwork = ({ data, transitionStatus }) => {
       </div>
     </>
   );
-};
-
-export default artwork;
+}
 
 export const query = graphql`
   {

@@ -6,28 +6,6 @@ import { Link } from "gatsby";
 import Logo from "../../UI/Logo/Logo";
 
 const Navbar = ({ showModal, iconChange }) => {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-
-    setVisible(
-      (prevScrollPos > currentScrollPos &&
-        prevScrollPos - currentScrollPos > 70) ||
-        currentScrollPos < 10
-    );
-
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  // new useEffect:
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible, handleScroll]);
-
   const top = {
     closed: {
       rotate: 0,
@@ -51,14 +29,9 @@ const Navbar = ({ showModal, iconChange }) => {
 
   return (
     <nav
-      style={{ top: visible ? "0" : "-150px" }}
       className={showModal ? "navbar navbar--closed" : "navbar navbar--open"}
     >
-      <div className={showModal ? "navbar__name--open" : "navbar__name"}>
-        <Logo fill={"black"} />
-      </div>
-
-      <div className="navbar__iconWrapper">
+      <div className="navbar__iconWrapper navbar__box">
         <motion.div className="navbar__hamburger" onClick={iconChange}>
           <motion.div
             className="navbar__upperbar"
@@ -73,8 +46,15 @@ const Navbar = ({ showModal, iconChange }) => {
             animate={showModal ? "opened" : "closed"}
           ></motion.div>
         </motion.div>
-        <div className=""> Menu</div>
+        <div className={showModal ? "navbar__open" : "navbar__closed"}>
+          {showModal ? "CLOSE" : "MENU"}
+        </div>
       </div>
+      <div className="navbar__name">
+        <div>HANNE EDFELT</div>
+        <div>STUDIO</div>
+      </div>
+      <div className="navbar__box"></div>
     </nav>
   );
 };

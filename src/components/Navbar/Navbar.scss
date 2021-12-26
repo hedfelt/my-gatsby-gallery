@@ -2,28 +2,51 @@
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  height: 5rem;
-  position: fixed;
-  z-index: 1000;
-  font-family: "Comfortaa", cursive;
-  font-weight: 600;
+  height: 8rem;
+
+  font-weight: 100;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.8rem;
+  color: black;
+  text-transform: uppercase;
+
+  &__open {
+    color: white;
+  }
+  &__closed {
+    color: black;
+  }
+
+  &__box {
+    z-index: 10000;
+    width: 12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   &__name {
-    padding: 2rem 1.7rem;
-    z-index: 1000;
-    &--open {
-      padding: 2rem 1.7rem;
-      z-index: 1000;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 76%;
+    & :first-child {
+      font-family: "Roboto Condensed", sans-serif;
+      font-weight: 500;
+      color: red;
+      font-size: 1.5rem;
     }
   }
   &__iconWrapper {
-    font-size: 1.2rem;
+    z-index: 10000;
+    font-size: 0.9rem;
     background: transparent;
-    z-index: 1000;
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 2rem 5.3rem 0rem 0rem;
   }
 
   &--open {
@@ -36,21 +59,26 @@
   }
 
   &__hamburger {
+    z-index: 10000;
+    margin-right: 1rem;
     cursor: pointer;
-    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: transparent;
-    padding-right: 1rem;
+    background-color: black;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   &__upperbar,
   &__lowerbar {
-    width: 1.8rem;
+    z-index: 10000;
+    width: 1.2rem;
     height: 0.1rem;
-    background: black;
-    margin: 0.3rem;
+    background: white;
+    margin: 0.2rem;
   }
 }
