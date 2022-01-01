@@ -1,7 +1,9 @@
 .footer {
   width: 100%;
+  color: white;
   font-family: "Noto sans";
   padding-top: 5rem;
+  background-color: #201d1d;
   &__wrapper {
     padding: 2rem 0rem;
     display: flex;
@@ -10,7 +12,6 @@
     justify-content: center;
     // background-color: #1f1f1f;k
     // color: #fbf7f2;
-    color: rgb(0, 0, 0);
   }
 
   &__logowrapper {
@@ -59,7 +60,7 @@
   &__contact {
     cursor: pointer;
     text-decoration: none;
-    color: #000;
+    color: white;
     padding: 1rem;
   }
   &__verticalline {
