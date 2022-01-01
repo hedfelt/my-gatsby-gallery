@@ -1,80 +1,51 @@
 .footer {
   width: 100%;
   color: white;
-  font-family: "Noto sans";
-  padding-top: 5rem;
-  background-color: #201d1d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto Condensed", sans-serif;
+  font-style: italic;
+  font-size: 2rem;
   &__wrapper {
-    padding: 2rem 0rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    // background-color: #1f1f1f;k
-    // color: #fbf7f2;
+    height: 10rem;
+    background-color: #201d1d;
+    width: 100%;
   }
-
-  &__logowrapper {
+  &__links {
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  &__linewrapper {
-    width: 25%;
-  }
-  &__logo {
-    display: flex;
-    width: 20%;
-    justify-content: center;
-  }
-
-  &__linkswrapper {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 2rem 0rem;
-  }
-  &__linksgroups {
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    line-height: 2;
-    width: 30%;
-    padding: 2rem 0rem;
-  }
-  &__icons {
-    display: flex;
-    align-items: center;
-    width: 30%;
     justify-content: space-around;
   }
-  &__icon {
-    width: 7%;
-  }
-  &__home,
-  &__about,
-  &__works,
-  &__contact {
+  &__link {
     cursor: pointer;
     text-decoration: none;
     color: white;
     padding: 1rem;
   }
-  &__verticalline {
-    height: 5rem;
-    width: 25%;
+  &__social {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  &__icon {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 2rem;
+  }
+  &__a {
+    padding: 2rem;
   }
   &__bottom {
-    padding: 2rem 0rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
+    font-family: "Comfortaa", cursive;
+    color: black;
+    padding: 1rem;
   }
 }
