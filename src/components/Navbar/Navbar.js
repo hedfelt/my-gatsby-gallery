@@ -50,8 +50,9 @@ const Navbar = ({ showModal, iconChange }) => {
           {showModal ? "CLOSE" : "MENU"}
         </div>
       </div>
-      <div className="navbar__name">
-        <div>HANNE EDFELT</div>
+      <div className="navbar__nameGroup">
+        <div className="navbar__name">HANNE</div>
+        <div className="navbar__name">EDFELT</div>
         <div>STUDIO</div>
       </div>
       <div className="navbar__box"></div>
