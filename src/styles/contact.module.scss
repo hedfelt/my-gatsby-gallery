@@ -1,100 +1,28 @@
-:root {
-  --fs-xl: clamp(2rem, 5.5vw + 1rem, 9rem);
-  --fs-vertical: clamp(2rem, 12vw + 1rem, 13rem);
-  --fs-400: clamp(0.5rem, 1vw + 0.5rem, 2.5rem);
-}
 .contact {
+  font-family: "Roboto Condensed", sans-serif;
   display: flex;
-  flex-direction: column;
-  color: #53624e;
-  font-family: Open Sans;
-  line-height: 1;
-  background-color: #53624e;
-  overflow: hidden;
-  &__topbox {
-    height: 25vh;
-    width: 100%;
+  justify-content: flex-end;
+  width: 100%;
+  height: 80rem;
+  &__leftWrapper {
+    background-color: orange;
+    width: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
   }
-  &__topbox1 {
-    width: 20%;
-    height: 100%;
-
-    background-color: #fbf7f2;
-  }
-
-  &__mainbox {
-    display: flex;
-  }
-
-  &__leftbox {
-    padding-bottom: 6vh;
-    text-align: right;
-    transform: rotate(180deg);
-    writing-mode: vertical-lr;
-    width: 20%;
-    font-weight: 600;
-    background-color: #fbf7f2;
-    overflow: hidden;
-    font-size: var(--fs-vertical);
-    span {
-      display: inline-block;
-      position: relative;
-    }
-  }
-  &__rightbox {
-    background-color: #53624e;
-    width: 20%;
-  }
-  &__box {
-    padding-top: 10rem;
-    background-color: #fbf7f2;
-    width: 60%;
+  &__rightWrapper {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
-
   &__header {
-    color: black;
-    font-size: var(--fs-xl);
-    font-weight: 100;
-    line-height: 0.9;
-  }
-  &__subheader {
-    color: black;
-    font-size: var(--fs-400);
-    padding: 4rem 0rem;
-    line-height: 1.1;
-  }
-}
-
-.formModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 2;
-
-  &__box {
-    max-width: 30rem;
-    height: 20rem;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: white;
-    opacity: 1;
-    border-radius: 10px;
-    // text-align: center;
-  }
-  &__button {
-    color: black;
-    cursor: pointer;
-    font-family: "Open Sans", sans-serif;
-  }
-
-  &__text {
-    color: black;
-    font-weight: bold;
+    font-size: 6rem;
+    font-weight: 400;
+    font-style: italic;
   }
 }

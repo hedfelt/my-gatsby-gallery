@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./ContactForm.scss";
+import * as styles from "./ContactForm.module.scss";
 
 export default function ContactForm() {
   const [enteredName, setEnteredName] = useState("");
@@ -16,13 +16,14 @@ export default function ContactForm() {
     setEnteredMessage("");
   };
   return (
-    <form className="form" onSubmit={submitHandler}>
-      <div>
-        <label htmlFor="name" className="form__label">
-          name
+    <form className={styles.form} onSubmit={submitHandler}>
+      <div className={styles.form__inputwrapper}>
+        <label className={styles.form__label} htmlFor="name">
+          NAME
         </label>
         <input
-          placeholder="name"
+          className={styles.form__input}
+          placeholder="Full Name"
           type="text"
           id="name"
           name="name"
@@ -31,19 +32,29 @@ export default function ContactForm() {
           value={enteredName}
         />
       </div>
-      <div>
-        <label htmlFor="email" className="form__label">
-          email
+      <div className={styles.form__inputwrapper}>
+        <label className={styles.form__label} htmlFor="email">
+          EMAIL
         </label>
-        <input placeholder="Email" type="email" id="email" />
+        <input
+          className={styles.form__input}
+          placeholder="Your Email"
+          type="email"
+          id="email"
+        />
       </div>
 
-      <div>
-        <label>message</label>
-        <textarea placeholder="Message" maxlenght="500"></textarea>
+      <div className={styles.form__inputwrapper}>
+        <label className={styles.form__label}>MESSAGE</label>
+        <textarea
+          style={{ height: "10rem" }}
+          className={styles.form__input}
+          placeholder="Your Message"
+          maxlenght="500"
+        ></textarea>
       </div>
-      <button className="form__button" type="submit">
-        SEND
+      <button className={styles.form__button} type="submit">
+        SUBMIT
       </button>
     </form>
   );
