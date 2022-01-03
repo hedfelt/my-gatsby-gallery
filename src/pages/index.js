@@ -1,5 +1,4 @@
 import React from "react";
-
 import * as styles from "../styles/home.module.scss";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
