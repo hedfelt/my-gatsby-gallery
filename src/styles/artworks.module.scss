@@ -1,5 +1,5 @@
 .gallery {
-  margin-top: 5rem;
+  margin-top: 6rem;
   -webkit-column-count: 3;
   -moz-column-count: 3;
   column-count: 3;
@@ -7,6 +7,97 @@
   -moz-column-width: 33%;
   column-width: 33%;
   padding: 0 12px;
+  font-family: "Roboto Condensed", sans-serif;
+  width: 85%;
+  margin: 2rem auto;
+
+  &__header {
+    margin-top: 13rem;
+    font-family: "Noto Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__title {
+    font-size: 5rem;
+    font-weight: 400;
+  }
+  &__bar {
+    padding-top: 3rem;
+    display: flex;
+    font-size: 1.3rem;
+    width: 60%;
+    justify-content: space-around;
+  }
+  &__baritem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &__dropdown {
+  }
+  &__dropdownlist {
+    list-style: none;
+  }
+  &__triangle {
+    width: 0;
+    height: 0;
+
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-top: 1rem solid black;
+  }
+  &__itemheader {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__arrow {
+    display: flex;
+  }
+
+  &__upperbar {
+    height: 1.3rem;
+    width: 0.2rem;
+    background: black;
+  }
+  &__lowerbar {
+    height: 1.3rem;
+    width: 0.2rem;
+    background: black;
+  }
+  &__holder {
+    text-decoration: none;
+  }
+  &__artwork {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: black;
+  }
+  &__line {
+    width: 60%;
+    height: 0.1rem;
+    background-color: black;
+    margin: 0.5rem 0rem;
+  }
+  &__button {
+    background-color: black;
+    color: rgb(126, 126, 126);
+    border-style: none;
+    font-size: 2rem;
+    font-style: italic;
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 0rem 0.9rem;
+    font-weight: 600;
+
+    &:hover {
+      color: white;
+      cursor: pointer;
+    }
+  }
 }
 
 .pics {
@@ -42,6 +133,7 @@
 
 .holder {
   overflow: hidden;
+  padding: 2rem 1rem;
 }
 
 .box {

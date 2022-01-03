@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import * as styles from "../styles/artworks.module.scss";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { TransitionState } from "gatsby-plugin-transition-link";
 import gsap from "gsap";
+import { motion } from "framer-motion";
+import DropDownMenu from "../components/DropDownMenu/DropDownMenu";
 
 export default function Artwork({ data, transitionStatus }) {
   const arts = data.allSanityArt.nodes;
@@ -32,19 +34,50 @@ export default function Artwork({ data, transitionStatus }) {
     }
   }, [transitionStatus]);
 
-  // const handleClick = (slug) => {
-  //   arts
-  //     .filter((art) => art.slug.current !== slug)
-  //     .forEach((art) => {
-  //       gsap.to(`.${art.slug.current}`, { autoAlpha: 0, duration: 1 });
-  //     });
-  // };
+  const dropdownList = ["Technique", "Colors", "Size", "Medium"];
+
+  const top = {
+    closed: {
+      rotate: 45,
+      translateX: "1rem",
+    },
+    opened: {
+      rotate: -45,
+      translateX: "1rem",
+    },
+    transition: {
+      duration: 0.6,
+    },
+  };
+  const bottom = {
+    closed: {
+      rotate: -45,
+      translateY: 0,
+    },
+    opened: {
+      rotate: 45,
+      translateY: 0,
+    },
+  };
+
+  const optionsList = ["Watercolor", "Acrylic", "Oil", "Ink"];
 
   return (
     <>
+      <div className={styles.gallery__header}>
+        <h1 className={styles.gallery__title}>GALLERY</h1>
+        <div className={styles.gallery__bar}>
+          {dropdownList.map((item) => (
+            <div key={item}>
+              <DropDownMenu title={item} options={optionsList} />
+            </div>
+          ))}
+        </div>
+      </div>
       <div className={styles.gallery}>
         {arts.map((art, index) => (
           <TransitionLink
+            className={styles.gallery__holder}
             // onClick={() => handleClick(art.slug.current)}
             to={"/artwork/" + art.slug.current}
             key={index}
@@ -68,6 +101,11 @@ export default function Artwork({ data, transitionStatus }) {
                 className={styles.pics}
                 id="pics"
               />
+              <h2 className={styles.gallery__artwork}>
+                Leaves in the sky, 2021
+              </h2>
+              <div className={styles.gallery__line}></div>
+              <button className={styles.gallery__button}>MORE</button>
             </div>
           </TransitionLink>
         ))}
@@ -82,7 +120,7 @@ export const query = graphql`
       nodes {
         artwork {
           asset {
-            gatsbyImageData(aspectRatio: 1, placeholder: DOMINANT_COLOR)
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
           }
         }
         slug {
