@@ -34,7 +34,7 @@ export default function Artwork({ data, transitionStatus }) {
     }
   }, [transitionStatus]);
 
-  const dropdownList = ["Technique", "Colors", "Size", "Medium"];
+  const dropdownList = ["Medium", "Colors", "Size"];
 
   const top = {
     closed: {
@@ -65,7 +65,6 @@ export default function Artwork({ data, transitionStatus }) {
   return (
     <>
       <div className={styles.gallery__header}>
-        <h1 className={styles.gallery__title}>GALLERY</h1>
         <div className={styles.gallery__bar}>
           {dropdownList.map((item) => (
             <div key={item}>
