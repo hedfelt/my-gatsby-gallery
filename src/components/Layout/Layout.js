@@ -3,7 +3,6 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import * as styles from "../../styles/global.module.scss";
 import Modal from "../Modal/Modal";
-import { Backdrop } from "../Backdrop/Backdrop";
 
 export default function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);
@@ -24,11 +23,7 @@ export default function Layout({ children }) {
         setShowModal={setShowModal}
         iconChange={() => setShowModal(!showModal)}
       />
-      <Backdrop
-        showModal={showModal}
-        setShowModal={setShowModal}
-        iconChange={() => setShowModal(!showModal)}
-      />
+
       {children}
       <Footer />
     </>

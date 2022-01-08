@@ -7,7 +7,8 @@ import { motion } from "framer-motion";
 const IndexPage = ({ data }) => {
   const frontpage = data.sanityLandingpage;
 
-  const image = data.sanityLandingpage.images[0].artwork.asset.gatsbyImageData;
+  const image =
+    data.sanityLandingpage.images[0].mainImage.asset.gatsbyImageData;
 
   return (
     <div className={styles.home__header}>
@@ -43,7 +44,7 @@ export const query = graphql`
       header
       subheader
       images {
-        artwork {
+        mainImage {
           asset {
             gatsbyImageData(placeholder: BLURRED)
           }

@@ -3,14 +3,16 @@ import { graphql } from "gatsby";
 import * as styles from "../styles/articles.module.scss";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { GatsbyImage } from "gatsby-plugin-image";
+import ImageGallery from "../components/ImageGallery/ImageGallery";
 
-export default function Blog({ data }) {
+export default function News({ data }) {
   const blogposts = data.allSanityBlogPost.nodes;
 
   console.log(blogposts);
 
   return (
     <div className={styles.articles}>
+      <ImageGallery items={blogposts} />
       {blogposts.map((blog, index) => (
         <div key={index}>
           {blog.title}

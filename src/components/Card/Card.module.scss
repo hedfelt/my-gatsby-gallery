@@ -1,0 +1,33 @@
+.card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &__title {
+    cursor: pointer;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: black;
+    margin-top: 1rem;
+  }
+  &__line {
+    width: 60%;
+    height: 0.1rem;
+    background-color: black;
+    margin: 0.5rem 0rem;
+  }
+
+  & button {
+    cursor: pointer;
+    background-color: #2b2e31;
+    color: rgb(177, 174, 174);
+    border-style: none;
+    font-size: 2rem;
+    font-style: italic;
+    font-family: "Roboto Condensed", sans-serif;
+    padding: 0rem 0.9rem;
+    font-weight: 600;
+  }
+}

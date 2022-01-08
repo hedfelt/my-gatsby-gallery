@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { graphql, Link } from "gatsby";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { GatsbyImage } from "gatsby-plugin-image";
-import * as styles from "../../styles/artworks.module.scss";
+import * as styles from "../../styles/gallery.module.scss";
 import { TransitionState } from "gatsby-plugin-transition-link";
 import gsap from "gsap";
 
@@ -95,7 +95,7 @@ export const query = graphql`
       slug {
         current
       }
-      artwork {
+      mainImage {
         asset {
           gatsbyImageData(placeholder: BLURRED)
         }

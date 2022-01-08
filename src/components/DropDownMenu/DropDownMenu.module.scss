@@ -1,66 +1,77 @@
 .dropdown {
-  font-family: "Roboto Condensed", sans-serif;
-  &__header {
-    margin-top: 13rem;
-    font-family: "Noto Sans", sans-serif;
+  &__wrapper {
+    letter-spacing: 0.1rem;
+    font-weight: 400;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-  }
-  &__title {
-    font-size: 1.3rem;
-    padding-right: 1.5rem;
-  }
-  &__bar {
-    padding-top: 3rem;
+    cursor: pointer;
+    padding: 0rem 2rem;
     display: flex;
-    font-size: 1.3rem;
-    width: 60%;
-    justify-content: space-around;
-  }
-  &__baritem {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+    &:hover {
+      color: black;
+    }
   }
 
-  &__dropdownlist {
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: rgb(231, 230, 230);
+  }
+
+  &__bar {
+    height: 0.65rem;
+    width: 0.2rem;
+    background: black;
+  }
+
+  &__options {
     background-color: white;
-    margin: 0.5rem 0rem 0rem 0rem;
-    padding: 1.5rem 2rem 2rem 0.3rem;
-    border-radius: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.75rem;
     z-index: 5000;
-    list-style: none;
     position: absolute;
-    box-shadow: 0 2px 1px rgb(119, 117, 117);
+    margin: 1rem 0rem 2rem 0rem;
+    height: auto;
   }
   &__checkboxcontainer {
     display: flex;
     align-items: center;
+    padding: 1em 2em 1em 2em;
+
+    &:hover {
+      color: black;
+    }
   }
-  &__label {
+  & label {
     cursor: pointer;
-    font-size: 0.9rem;
+    align-items: center;
     display: flex;
+
     &::before {
       content: "";
       width: 1em;
       height: 1em;
-      border: 0.05em solid black;
-      border-radius: 0.15em;
-      margin-right: 0.5em;
+      border: 0.05em solid grey;
+      margin-right: 1em;
     }
     &:hover::before {
       background-color: rgb(199, 199, 199);
     }
   }
-  &__input {
+  & input {
     cursor: pointer;
     opacity: 0;
     position: absolute;
     &:hover + label::before {
-      background-color: rgb(177, 177, 177);
+      background-color: rgb(226, 224, 224);
     }
     &:checked + label::before {
       background-color: black;
@@ -71,29 +82,11 @@
       color: white;
     }
     &:focus + label::before {
-      box-shadow: 0 0 5px rgb(119, 117, 117);
+      box-shadow: 0 0 5px rgb(202, 199, 199);
     }
   }
+}
 
-  &__itemheader {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__arrow {
-    display: flex;
-  }
-
-  &__upperbar {
-    height: 0.9rem;
-    width: 0.2rem;
-    background: black;
-  }
-  &__lowerbar {
-    height: 0.9rem;
-    width: 0.2rem;
-    background: black;
-  }
+.dropdown__wrapper:hover .dropdown__arrow {
+  background-color: rgb(206, 206, 206);
 }
