@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from "react";
-import * as navbar from "./Navbar.scss";
-import { motion } from "framer-motion";
-import NavbarIcon from "../../UI/NavbarIcon/NavbarIcon";
+import * as styles from "./Navbar.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "gatsby";
-import Logo from "../../UI/Logo/Logo";
 
-const Navbar = ({ showModal, iconChange }) => {
+export default function Navbar({ showModal, iconChange }) {
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
+  useEffect(() => {
+    const changeWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", changeWidth);
+
+    return () => {
+      window.removeEventListener("resize", changeWidth);
+    };
+  }, []);
   const top = {
     closed: {
       rotate: 0,
@@ -13,7 +29,7 @@ const Navbar = ({ showModal, iconChange }) => {
     },
     opened: {
       rotate: 45,
-      translateY: 6,
+      translateY: 4,
     },
   };
   const bottom = {
@@ -23,38 +39,49 @@ const Navbar = ({ showModal, iconChange }) => {
     },
     opened: {
       rotate: -45,
-      translateY: -6,
+      translateY: -4,
     },
   };
 
   return (
-    <nav
-      className={showModal ? "navbar navbar--closed" : "navbar navbar--open"}
-    >
-      <div className="navbar__iconWrapper navbar__box">
-        <motion.div className="navbar__hamburger" onClick={iconChange}>
+    <nav className={styles.navbar}>
+      {(toggleMenu || screenWidth > 500) && (
+        <ul className={styles.navbar__list}>
+          <li className={styles.navbar__item}>
+            <Link to="/">HOME</Link>
+          </li>
+          <li className={styles.navbar__item}>
+            <Link to="/gallery">GALLERY</Link>
+          </li>
+          <li className={`${styles.navbar__item} ${styles.navbar__logo}`}>
+            HANNE EDFELT
+          </li>
+          <li className={styles.navbar__item}>
+            <Link to="/news">NEWS</Link>
+          </li>
+          <li className={styles.navbar__item}>
+            <Link to="/contact">CONTACT</Link>
+          </li>
+        </ul>
+      )}
+
+      <div className="navbar__button" onClick={toggleNav}>
+        <motion.div className={styles.navbar__button} onClick={toggleNav}>
           <motion.div
-            className="navbar__upperbar"
+            className={styles.navbar__bar}
             variants={top}
-            initial={showModal ? "closed" : "open"}
-            animate={showModal ? "opened" : "closed"}
+            initial={toggleMenu ? "closed" : "open"}
+            animate={toggleMenu ? "opened" : "closed"}
           ></motion.div>
           <motion.div
-            className="navbar__lowerbar"
+            className={styles.navbar__bar}
             variants={bottom}
-            initial={showModal ? "closed" : "open"}
-            animate={showModal ? "opened" : "closed"}
+            initial={toggleMenu ? "closed" : "open"}
+            animate={toggleMenu ? "opened" : "closed"}
           ></motion.div>
         </motion.div>
-        <div className={showModal ? "navbar__open" : "navbar__closed"}>
-          {showModal ? "CLOSE" : "MENU"}
-        </div>
+        <div className={styles.navbar__smallscreen}>HANNE EDFELT</div>
       </div>
-      <div className="navbar__logo">HANNE EDFELT</div>
-
-      <div className="navbar__box"></div>
     </nav>
   );
-};
-
-export default Navbar;
+}

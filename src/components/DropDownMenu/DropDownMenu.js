@@ -8,6 +8,7 @@ export default function DropDownMenu({ title, options }) {
   const clickOptionsHandler = () => {
     setShowOptions(!showOptions);
   };
+
   const top = {
     closed: {
       rotate: -45,
