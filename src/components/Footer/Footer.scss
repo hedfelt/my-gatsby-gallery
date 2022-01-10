@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  z-index: 1000;
+
   color: white;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   font-size: 2rem;
   &__wrapper {
     display: flex;
-    z-index: 1000;
+
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -28,7 +28,6 @@
     cursor: pointer;
     text-decoration: none;
     color: white;
-    padding: 1rem;
   }
   &__social {
     display: flex;
@@ -41,15 +40,13 @@
     align-items: center;
     height: 2rem;
   }
-  &__a {
-    padding: 2rem;
-  }
+
   &__bottom {
     text-align: center;
     vertical-align: center;
     width: 100%;
     background-color: white;
-    z-index: 1000;
+
     font-size: 0.8rem;
     font-family: "Noto sans", sans-serif;
     color: black;

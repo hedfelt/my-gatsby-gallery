@@ -10,31 +10,7 @@ const IndexPage = ({ data }) => {
   const image =
     data.sanityLandingpage.images[0].mainImage.asset.gatsbyImageData;
 
-  return (
-    <div className={styles.home__header}>
-      <div className={styles.home__overlay}>
-        <motion.div
-          animate={{ y: 0 }}
-          initial={{ y: 300 }}
-          transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-          className="ART"
-        >
-          {frontpage.header}
-        </motion.div>
-      </div>
-      <div className={styles.home__overlay}>
-        <motion.div
-          animate={{ y: 0 }}
-          initial={{ y: 300 }}
-          transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-          className=""
-        >
-          {frontpage.subheader}
-        </motion.div>
-      </div>
-      <GatsbyImage image={image} alt="test" />
-    </div>
-  );
+  return <div className={styles.home__header}></div>;
 };
 export default IndexPage;
 
