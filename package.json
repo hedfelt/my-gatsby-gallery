@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^6.5.0",
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^2.8.1",
     "gatsby-plugin-image": "^1.8.0",

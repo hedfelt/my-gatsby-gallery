@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { graphql, Link } from "gatsby";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { GatsbyImage } from "gatsby-plugin-image";
-import * as styles from "../../styles/articles.module.scss";
+import * as styles from "../../styles/news.module.scss";
 import BlockContent from "@sanity/block-content-to-react";
 
 const SingleArticle = ({ data }) => {

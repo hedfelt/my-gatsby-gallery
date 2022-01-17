@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as styles from "./DropDownMenu.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function DropDownMenu({ title, options }) {
+export default function DropDownMenu({ title, options, color }) {
   const [showOptions, setShowOptions] = useState(false);
 
   const clickOptionsHandler = () => {
@@ -11,12 +11,12 @@ export default function DropDownMenu({ title, options }) {
 
   const top = {
     closed: {
-      rotate: -45,
-      translateX: "-0.07rem",
+      rotate: -50,
+      translateX: "-0.1rem",
     },
     opened: {
-      rotate: 45,
-      translateX: "-0.07rem",
+      rotate: -130,
+      translateX: "-0.1rem",
     },
     transition: {
       duration: 0.7,
@@ -24,12 +24,12 @@ export default function DropDownMenu({ title, options }) {
   };
   const bottom = {
     closed: {
-      rotate: 45,
-      translateX: "0.07rem",
+      rotate: 50,
+      translateX: "0.1rem",
     },
     opened: {
-      rotate: -45,
-      translateX: "0.07rem",
+      rotate: 130,
+      translateX: "0.1rem",
     },
   };
 
@@ -59,23 +59,28 @@ export default function DropDownMenu({ title, options }) {
         className={styles.dropdown__wrapper}
         onClick={clickOptionsHandler}
       >
-        <div className={styles.dropwdown__title}>{title}</div>
-
-        <motion.div className={styles.dropdown__arrow}>
-          {arrow_variants.map((variant) => (
-            <motion.div
-              key={variant}
-              className={styles.dropdown__bar}
-              variants={variant}
-              initial={showOptions ? "closed" : "open"}
-              animate={showOptions ? "opened" : "closed"}
-            ></motion.div>
-          ))}
-        </motion.div>
+        <button
+          className={styles.dropdown__header}
+          aria-expanded={showOptions ? "true" : "false"}
+        >
+          <legend>{title}</legend>
+          <motion.div className={styles.dropdown__arrow} aria-hidden="true">
+            {arrow_variants.map((variant) => (
+              <motion.div
+                key={variant}
+                className={styles.dropdown__bar}
+                variants={variant}
+                initial={showOptions ? "closed" : "open"}
+                animate={showOptions ? "opened" : "closed"}
+              ></motion.div>
+            ))}
+          </motion.div>
+        </button>
+        <div className={styles.dropdown__color}></div>
       </motion.div>
       <AnimatePresence>
         {showOptions && (
-          <motion.div
+          <motion.fieldset
             className={styles.dropdown__options}
             variants={containerVariant}
             initial="hidden"
@@ -92,7 +97,7 @@ export default function DropDownMenu({ title, options }) {
                 <label htmlFor={item}>{item}</label>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.fieldset>
         )}
       </AnimatePresence>
     </div>
