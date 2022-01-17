@@ -1,14 +1,95 @@
 .home {
+  z-index: 1;
+  width: 100%;
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    color: white;
+    font-family: "Lora", serif;
+    padding-bottom: 5rem;
+  }
+  &__box {
+    background-color: black;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  &__rightwrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+  &__overlaygrid {
+    grid-area: 1/1;
+    display: grid;
+    place-items: center;
+    position: relative;
+    font-size: 4rem;
+    font-weight: 200;
+    background: black;
+    opacity: 0.6;
+  }
+  &__box2 {
+    display: grid;
+    width: 50%;
+  }
+  &__image {
+    grid-area: 1/1;
+  }
+
   &__header {
-    padding-top: 5rem;
-    line-height: 1.1;
-    font-family: dahlia;
-    font-size: 18rem;
+    font-size: 4rem;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  &__subheader {
+    cursor: pointer;
+    font-weight: 200;
+    font-family: "Nunito", sans-serif;
+    font-size: 0.9rem;
+    margin: 0rem 0rem 5rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__arrow {
+    margin-left: 1rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 0.1rem solid white;
+    border-left: 0;
+    border-top: 0;
+    transform: rotate(315deg);
+    border-radius: 0.1rem;
+  }
+}
+
+.dropdown {
+  &__arrow {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: rgb(231, 230, 230);
   }
-  &__overlay {
-    overflow: hidden;
+
+  &__bar {
+    height: 0.65rem;
+    width: 0.2rem;
+    background: black;
   }
 }

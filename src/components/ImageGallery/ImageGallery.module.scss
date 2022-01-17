@@ -1,14 +1,41 @@
 .gallery {
-  font-family: "Roboto Condensed", sans-serif;
-  width: 85%;
-  margin: 5rem auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
+  width: 100%;
+  margin: 0 auto;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+  font-size: 0.6rem;
+  font-weight: 200;
 
-.gallery > .gallery__item {
-  flex: 1 1 30%;
-  height: 100px;
+  &__card {
+    text-decoration: none;
+    color: black;
+  }
+  & button {
+    background-color: #d8d8d8;
+    color: white;
+    border-style: none;
+    font-size: 2rem;
+    padding: 0rem 0.5rem;
+    font-style: italic;
+  }
+
+  &__wrapper {
+    display: inline-block;
+    margin: 2.5rem 1rem;
+  }
+  &__title {
+    font-family: "Nunito", sans-serif;
+    color: rgb(58, 58, 58);
+    padding-top: 1rem;
+  }
+  &__line {
+    width: 60%;
+    background-color: #d8d8d8;
+    height: 0.1rem;
+    margin: 1rem 0rem;
+  }
 }

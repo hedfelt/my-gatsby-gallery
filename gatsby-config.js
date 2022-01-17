@@ -10,9 +10,6 @@ module.exports = {
     "gatsby-plugin-sharp",
     {
       resolve: "gatsby-plugin-transition-link",
-      options: {
-        layout: require.resolve(`./src/components/Layout/Layout.js`),
-      },
     },
     {
       resolve: `gatsby-source-sanity`,

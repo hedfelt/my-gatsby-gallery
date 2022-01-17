@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import * as styles from "./Navbar.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "gatsby";
+import { NavbarItem } from "../NavbarItem/NavbarItem";
 
-export default function Navbar({ showModal, iconChange }) {
+export default function Navbar({ color }) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const [active, setActive] = useState(false);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
@@ -43,25 +46,14 @@ export default function Navbar({ showModal, iconChange }) {
     },
   };
 
+  const navbarItems = ["home", "gallery", "HANNE EDFELT", "news", "contact"];
   return (
     <nav className={styles.navbar}>
       {(toggleMenu || screenWidth > 500) && (
         <ul className={styles.navbar__list}>
-          <li className={styles.navbar__item}>
-            <Link to="/">HOME</Link>
-          </li>
-          <li className={styles.navbar__item}>
-            <Link to="/gallery">GALLERY</Link>
-          </li>
-          <li className={`${styles.navbar__item} ${styles.navbar__logo}`}>
-            HANNE EDFELT
-          </li>
-          <li className={styles.navbar__item}>
-            <Link to="/news">NEWS</Link>
-          </li>
-          <li className={styles.navbar__item}>
-            <Link to="/contact">CONTACT</Link>
-          </li>
+          {navbarItems.map((item) => (
+            <NavbarItem key={item} item={item} color={color} />
+          ))}
         </ul>
       )}
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import * as styles from "../styles/articles.module.scss";
+import * as styles from "../styles/news.module.scss";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { GatsbyImage } from "gatsby-plugin-image";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
@@ -11,15 +11,8 @@ export default function News({ data }) {
   console.log(blogposts);
 
   return (
-    <div className={styles.articles}>
+    <div className={styles.news}>
       <ImageGallery items={blogposts} />
-      {blogposts.map((blog, index) => (
-        <div key={index}>
-          {blog.title}
-          {blog.publishedAt}
-          <GatsbyImage image={blog.mainImage.asset.gatsbyImageData} alt="" />
-        </div>
-      ))}
     </div>
   );
 }

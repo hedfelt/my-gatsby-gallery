@@ -1,28 +1,18 @@
 .navbar {
-  font-family: "nunito", sans-serif;
-  position: absolute;
-  z-index: 1000;
-  top: 0;
-  margin: 0;
-  padding: 0;
   width: 100%;
-  font-size: 0.8rem;
-  font-weight: 200;
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 1rem 0rem 1rem;
-  }
   &__list {
+    height: 100%;
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
-    margin: 1rem;
+    margin: 0;
     padding: 0;
   }
   &__item {
-    margin: 0;
-    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   &__link {
     text-decoration: none;
@@ -46,24 +36,16 @@
     display: none;
   }
 
-  &__line {
-    height: 0.05rem;
-    width: 99%;
-
-    margin: 0rem auto;
-    padding: 0rem;
-  }
   &__nonactive {
     width: 100%;
     height: 0.1rem;
     border-radius: 10rem;
-    background-color: black;
+    background-color: blue;
   }
-  &__underline {
+  &__activeline {
     width: 100%;
     height: 0.1rem;
     border-radius: 10rem;
-    background-color: blue;
   }
 }
 
