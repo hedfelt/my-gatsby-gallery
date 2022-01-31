@@ -1,41 +1,62 @@
 .form {
   margin-top: 2rem;
-  width: 70%;
+  width: 100%;
   font-family: "Roboto Condensed", sans-serif;
-  font-style: italic;
+
   &__inputwrapper {
     display: flex;
     flex-direction: column;
     padding: 2rem 0rem;
   }
   & input {
-    border: 0.1rem solid black;
-    padding: 1rem;
-    font-size: 1.3rem;
+    background-color: transparent;
+    border-style: none;
+    border-bottom: 0.05rem solid white;
+    padding: 1rem 0rem;
+    font-size: 2rem;
+    font-weight: 400;
     font-family: "Roboto Condensed", sans-serif;
+    color: white;
+    &::placeholder {
+      color: white;
+      opacity: 0.6;
+    }
+
     &:focus {
       outline: none !important;
-      border: 0.1rem solid rgb(67, 67, 253);
+      border-bottom: 0.05rem solid black;
     }
   }
   & label {
-    font-size: 1.8rem;
+    font-size: clamp(1rem, 0.7956rem + 0.906vw, 1.5rem);
     padding: 0.5rem 0rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+    font-style: italic;
   }
   &__textarea {
-    border: 0.1rem solid black;
+    border-style: none;
+    border-bottom: 0.05rem solid white;
     height: 10rem;
-    padding: 1rem;
-    font-size: 1.3rem;
+    padding: 1rem 0rem;
+    font-size: 2rem;
+    font-weight: 400;
     font-family: "Roboto Condensed", sans-serif;
+    background-color: transparent;
     &:focus {
       outline: none !important;
-      border: 0.1rem solid rgb(67, 67, 253);
+      border-bottom: 0.05rem solid rgb(67, 67, 253);
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.6;
     }
   }
   &__button {
     color: white;
-    background-color: black;
+    background-color: transparent;
+    border: 0.1rem solid white;
     width: 100%;
     padding: 0;
     margin: 6rem 0rem;

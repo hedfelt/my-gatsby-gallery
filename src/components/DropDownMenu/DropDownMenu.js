@@ -1,12 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as styles from "./DropDownMenu.module.scss";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 
-export default function DropDownMenu({ title, options, color }) {
-  const [showOptions, setShowOptions] = useState(false);
+export default function DropDownMenu({ title, options }) {
+  const [showOptions, setShowOptions] = useRef(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const menuRef = useRef();
 
   const clickOptionsHandler = () => {
     setShowOptions(!showOptions);
+  };
+
+  useEffect(() => {
+    // Bind the event listener
+    document.addEventListener("mousedown", handleOutsideClicks);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleOutsideClicks);
+    };
+  }, [menuOpen]);
+
+  //create a function in your component to handleOutsideClicks
+  const handleOutsideClicks = (event) => {
+    if (
+      menuOpen &&
+      menuRef.current &&
+      !menuRef.current.contains(event.target)
+    ) {
+      setMenuOpen(false);
+    }
   };
 
   const top = {
@@ -52,16 +75,19 @@ export default function DropDownMenu({ title, options, color }) {
   };
 
   const arrow_variants = [top, bottom];
+
   return (
-    <div className={styles.dropdown}>
+    <motion.div ref={menuRef} className={styles.dropdown}>
       <motion.div
         whileHover="hover"
         className={styles.dropdown__wrapper}
-        onClick={clickOptionsHandler}
+        onClick={() => {
+          setMenuOpen(!menuOpen);
+        }}
       >
         <button
           className={styles.dropdown__header}
-          aria-expanded={showOptions ? "true" : "false"}
+          aria-expanded={menuOpen ? "true" : "false"}
         >
           <legend>{title}</legend>
           <motion.div className={styles.dropdown__arrow} aria-hidden="true">
@@ -70,16 +96,24 @@ export default function DropDownMenu({ title, options, color }) {
                 key={variant}
                 className={styles.dropdown__bar}
                 variants={variant}
-                initial={showOptions ? "closed" : "open"}
-                animate={showOptions ? "opened" : "closed"}
+                initial={menuOpen ? "closed" : "open"}
+                animate={menuOpen ? "opened" : "closed"}
               ></motion.div>
             ))}
           </motion.div>
         </button>
-        <div className={styles.dropdown__color}></div>
+
+        {menuOpen && (
+          <motion.div
+            layoutId="underline"
+            animate
+            className={styles.dropdown__underline}
+            style={{ backgroundColor: "green" }}
+          ></motion.div>
+        )}
       </motion.div>
-      <AnimatePresence>
-        {showOptions && (
+      {/* <AnimatePresence>
+        {menuOpen && (
           <motion.fieldset
             className={styles.dropdown__options}
             variants={containerVariant}
@@ -99,7 +133,7 @@ export default function DropDownMenu({ title, options, color }) {
             ))}
           </motion.fieldset>
         )}
-      </AnimatePresence>
-    </div>
+      </AnimatePresence> */}
+    </motion.div>
   );
 }
