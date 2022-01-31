@@ -6,9 +6,23 @@ import { NavbarItem } from "../NavbarItem/NavbarItem";
 
 export default function Navbar({ color }) {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [activeScroll, setActiveScroll] = useState(false);
 
-  const [active, setActive] = useState(false);
+  useEffect(() => {
+    const changeBackground = () => {
+      if (window.scrollY >= 90) {
+        setActiveScroll(true);
+      } else {
+        setActiveScroll(false);
+      }
+    };
+    window.addEventListener("scroll", changeBackground);
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, [setActiveScroll]);
+
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
@@ -49,30 +63,49 @@ export default function Navbar({ color }) {
   const navbarItems = ["home", "gallery", "HANNE EDFELT", "news", "contact"];
   return (
     <nav className={styles.navbar}>
-      {(toggleMenu || screenWidth > 500) && (
-        <ul className={styles.navbar__list}>
-          {navbarItems.map((item) => (
-            <NavbarItem key={item} item={item} color={color} />
-          ))}
-        </ul>
-      )}
-
-      <div className="navbar__button" onClick={toggleNav}>
-        <motion.div className={styles.navbar__button} onClick={toggleNav}>
+      <div
+        className={
+          activeScroll
+            ? styles.navbar__activescrollbar
+            : styles.navbar__unactivescrollbar
+        }
+      >
+        {(toggleMenu || screenWidth > 500) && (
+          <ul className={styles.navbar__list}>
+            {navbarItems.map((item) => (
+              <NavbarItem
+                scrolling={activeScroll}
+                key={item}
+                item={item}
+                color={color}
+              />
+            ))}
+          </ul>
+        )}
+        <div className="navbar__button" onClick={toggleNav}>
           <motion.div
-            className={styles.navbar__bar}
-            variants={top}
-            initial={toggleMenu ? "closed" : "open"}
-            animate={toggleMenu ? "opened" : "closed"}
-          ></motion.div>
-          <motion.div
-            className={styles.navbar__bar}
-            variants={bottom}
-            initial={toggleMenu ? "closed" : "open"}
-            animate={toggleMenu ? "opened" : "closed"}
-          ></motion.div>
-        </motion.div>
-        <div className={styles.navbar__smallscreen}>HANNE EDFELT</div>
+            whileHover={{ scale: 1.1 }}
+            className={styles.navbar__button}
+            onClick={toggleNav}
+          >
+            <motion.div
+              className={styles.navbar__bar}
+              variants={top}
+              initial={toggleMenu ? "closed" : "open"}
+              animate={toggleMenu ? "opened" : "closed"}
+            ></motion.div>
+            <motion.div
+              className={styles.navbar__bar}
+              variants={bottom}
+              initial={toggleMenu ? "closed" : "open"}
+              animate={toggleMenu ? "opened" : "closed"}
+            ></motion.div>
+          </motion.div>
+          <div className={styles.navbar__smallscreen}>
+            <div>HANNE</div>
+            <div>EDFELT</div>
+          </div>
+        </div>
       </div>
     </nav>
   );

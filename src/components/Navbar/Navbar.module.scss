@@ -1,42 +1,41 @@
 .navbar {
   font-family: "nunito", sans-serif;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   top: 0;
-  margin: 0;
-  padding: 0;
   width: 100%;
-  font-size: 0.8rem;
-  font-weight: 200;
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 1rem 0rem 1rem;
+
+  &__activescrollbar {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
   }
+  &__nonactivescrollbar {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+  }
+
   &__list {
+    padding: 1rem;
     list-style-type: none;
     display: flex;
     justify-content: space-between;
-    margin: 1rem;
-    padding: 0;
+    align-items: center;
   }
-  &__item {
-    margin: 0;
-    padding: 0;
-  }
+
   &__link {
     text-decoration: none;
     cursor: pointer;
     text-align: center;
     text-transform: uppercase;
-  }
-
-  &__logo {
-    font-size: 1.3rem;
-    width: 60%;
-    text-align: center;
-    font-weight: 400;
-    font-family: "Lora", serif;
   }
 
   &__smallscreen {
@@ -69,8 +68,8 @@
 
 @media screen and(max-width: 500px) {
   .navbar {
-    margin: 0;
-    padding: 0;
+    margin: 0rem;
+    padding: 0rem;
     &__list {
       position: absolute;
       flex-direction: column;
@@ -78,8 +77,9 @@
       align-items: center;
       top: 0;
       width: 100vw;
-      height: 100vh;
       background-color: black;
+      padding: 0;
+      margin: 0;
     }
     &__item {
       color: white;
@@ -93,20 +93,24 @@
       display: block;
       position: absolute;
       top: 0;
-      margin: 1rem auto;
       left: 0;
-      right: 0;
-      text-align: center;
+      z-index: 1;
       color: white;
       font-size: 2rem;
-      font-weight: 400;
-      z-index: 1;
+      text-align: center;
+      font-weight: 700;
+      font-family: "Roboto Condensed", sans-serif;
+      display: flex;
+      flex-direction: column;
+      font-style: italic;
+      line-height: 1;
+      margin: 2rem;
     }
     &__button {
       z-index: 10000;
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       cursor: pointer;
       display: flex;
       justify-content: center;
@@ -114,13 +118,13 @@
       flex-direction: column;
       background-color: rgb(36, 36, 36);
       border-radius: 50%;
-      width: 2.5rem;
-      height: 2.5rem;
-      margin: 1rem;
+      width: 4rem;
+      height: 4rem;
+      margin: 2rem;
     }
     &__bar {
       z-index: 10000;
-      width: 1.2rem;
+      width: 2rem;
       height: 0.1rem;
       background: white;
       margin: 0.2rem;

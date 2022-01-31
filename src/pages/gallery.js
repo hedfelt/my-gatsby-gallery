@@ -1,22 +1,22 @@
 import React from "react";
 import { graphql } from "gatsby";
-
-import TransitionLink from "gatsby-plugin-transition-link";
-import { GatsbyImage } from "gatsby-plugin-image";
 import * as styles from "../styles/gallery.module.scss";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
 import Menu from "../components/Menu/Menu";
-import Navbar from "../components/Navbar/Navbar";
+import { Wrapper } from "../components/Wrapper/Wrapper";
 
 export default function Gallery({ data }) {
   const arts = data.allSanityArt.nodes;
 
+  const menus = data.allSanityTags.nodes;
+
   return (
-    <div className={styles.gallery}>
-      <Navbar color={"black"} />
-      <Menu />
-      <ImageGallery items={arts} />
-    </div>
+    <Wrapper color="black">
+      <div className={styles.gallery}>
+        <Menu items={menus} />
+        <ImageGallery items={arts} />
+      </div>
+    </Wrapper>
   );
 }
 
@@ -33,6 +33,14 @@ export const query = graphql`
           current
           _key
         }
+      }
+    }
+
+    allSanityTags {
+      nodes {
+        name
+        type
+        id
       }
     }
   }

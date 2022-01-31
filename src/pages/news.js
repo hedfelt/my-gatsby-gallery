@@ -4,6 +4,7 @@ import * as styles from "../styles/news.module.scss";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { GatsbyImage } from "gatsby-plugin-image";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
+import { Wrapper } from "../components/Wrapper/Wrapper";
 
 export default function News({ data }) {
   const blogposts = data.allSanityBlogPost.nodes;
@@ -11,9 +12,11 @@ export default function News({ data }) {
   console.log(blogposts);
 
   return (
-    <div className={styles.news}>
-      <ImageGallery items={blogposts} />
-    </div>
+    <Wrapper>
+      <div className={styles.news}>
+        <ImageGallery items={blogposts} />
+      </div>
+    </Wrapper>
   );
 }
 
@@ -24,9 +27,7 @@ export const query = graphql`
         publishedAt(formatString: "MMMM D, YYYY")
         title
         featured
-        tags {
-          tags
-        }
+
         author {
           name
         }

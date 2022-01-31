@@ -1,14 +1,12 @@
 .home {
-  z-index: 1;
-  width: 100%;
-
   &__wrapper {
     width: 100%;
     display: flex;
-    height: 100vh;
     color: white;
     font-family: "Lora", serif;
-    padding-bottom: 5rem;
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
   &__box {
     background-color: black;
@@ -18,7 +16,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 100vh;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
   &__rightwrapper {
     display: flex;
@@ -41,15 +42,21 @@
   &__box2 {
     display: grid;
     width: 50%;
+    height: 100vh;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
   &__image {
     grid-area: 1/1;
   }
 
   &__header {
-    font-size: 4rem;
+    font-size: clamp(3.125rem, 0.8929rem + 7.1429vw, 6.25rem);
+    font-weight: 200;
     margin: auto;
     cursor: pointer;
+    font-family: "Cormorant Garamond", serif;
   }
 
   &__subheader {
@@ -71,25 +78,5 @@
     border-top: 0;
     transform: rotate(315deg);
     border-radius: 0.1rem;
-  }
-}
-
-.dropdown {
-  &__arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1rem;
-    border-radius: 2rem;
-    height: 2rem;
-    width: 2rem;
-    background-color: rgb(231, 230, 230);
-  }
-
-  &__bar {
-    height: 0.65rem;
-    width: 0.2rem;
-    background: black;
   }
 }
