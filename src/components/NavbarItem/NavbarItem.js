@@ -11,7 +11,7 @@ export const NavbarItem = ({ item }) => {
 
   return (
     <>
-      <li onClick={clickHandler} key={item} className={styles.navbar__item}>
+      <li onClick={clickHandler} className={styles.navbar__item}>
         <Link
           to={item === "home" ? "/" : "/" + item}
           className={styles.navbar__link}
