@@ -4,7 +4,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "gatsby";
 import { NavbarItem } from "../NavbarItem/NavbarItem";
 
-export default function Navbar({ color }) {
+export default function Navbar() {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu);
+  };
+
   const top = {
     closed: {
       rotate: 0,
@@ -26,33 +32,27 @@ export default function Navbar({ color }) {
     },
   };
 
-  const navbarItems = ["home", "gallery", "news", "contact"];
-
   return (
     <nav className={styles.navbar}>
-      <div className="navbar__button">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className={styles.navbar__button}
-        >
-          <motion.div
-            className={styles.navbar__bar}
-            variants={top}
-            initial={toggleMenu ? "closed" : "open"}
-            animate={toggleMenu ? "opened" : "closed"}
-          ></motion.div>
-          <motion.div
-            className={styles.navbar__bar}
-            variants={bottom}
-            initial={toggleMenu ? "closed" : "open"}
-            animate={toggleMenu ? "opened" : "closed"}
-          ></motion.div>
-        </motion.div>
-        <div className={styles.navbar__smallscreen}>
-          <div>HANNE</div>
-          <div>EDFELT</div>
-        </div>
+      <div className={styles.navbar__logo}>
+        HANNE <br />
+        EDFELT
       </div>
+
+      <motion.div className={styles.navbar__button} onClick={toggleNav}>
+        <motion.div
+          className={styles.navbar__bar}
+          variants={top}
+          initial={toggleMenu ? "closed" : "open"}
+          animate={toggleMenu ? "opened" : "closed"}
+        ></motion.div>
+        <motion.div
+          className={styles.navbar__bar}
+          variants={bottom}
+          initial={toggleMenu ? "closed" : "open"}
+          animate={toggleMenu ? "opened" : "closed"}
+        ></motion.div>
+      </motion.div>
     </nav>
   );
 }

@@ -16,7 +16,7 @@ export default function ContactPage({ data }) {
   // console.log(contactdata);
 
   return (
-    <Wrapper color="black">
+    <Wrapper color="#393939">
       <div className={styles.contact}>
         <div className={styles.contact__leftWrapper}>
           <GatsbyImage
@@ -24,7 +24,7 @@ export default function ContactPage({ data }) {
             alt=""
             // className={styles.gallery__image}
             // id="pics"
-            // style={{ width: "100%" }}
+            style={{ width: "100%" }}
           />
         </div>
         <div className={styles.contact__rightWrapper}>

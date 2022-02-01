@@ -7,7 +7,7 @@ import "./Footer.scss";
 // import Line from "../../UI/line/line";
 
 const Footer = () => {
-  return <div className="footer">Footer</div>;
+  return <div className="footer"></div>;
 };
 
 export default Footer;
