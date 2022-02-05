@@ -1,0 +1,18 @@
+.modal {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  color: black;
+  height: 100vh;
+  z-index: 1000;
+  width: 100%;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+  }
+}

@@ -1,30 +1,20 @@
 import React from "react";
-import TransitionLink from "gatsby-plugin-transition-link";
-import { GatsbyImage } from "gatsby-plugin-image";
 import * as styles from "./ImageGallery.module.scss";
+import Card from "../Card/Card";
 
-export default function ImageGallery({ items }) {
+export default function ImageGallery({ items, checkedValues }) {
+  const filteredArt = items.filter((art) =>
+    checkedValues.every((checkedValue) =>
+      art.tag.map((tag) => tag.name).includes(checkedValue)
+    )
+  );
   return (
     <div className={styles.gallery}>
-      {items.map((art, index) => (
-        <div className={styles.gallery__wrapper} key={index}>
-          <TransitionLink
-            to={"/artwork/" + art.slug.current}
-            className={styles.gallery__card}
-          >
-            <GatsbyImage
-              image={art.mainImage.asset.gatsbyImageData}
-              alt=""
-              className={styles.gallery__image}
-              id="pics"
-              style={{ width: "100%" }}
-            />
-            <h2 className={styles.gallery__title}>Leaves in the sky, 2021</h2>
-            <div className={styles.gallery__line}></div>
-            <button>MORE</button>
-          </TransitionLink>
-        </div>
-      ))}
+      {filteredArt.length ? (
+        filteredArt.map((art, index) => <Card art={art} key={index} />)
+      ) : (
+        <div className={styles.gallery__error}>Sorry, no results.</div>
+      )}
     </div>
   );
 }

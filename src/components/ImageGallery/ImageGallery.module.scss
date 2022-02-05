@@ -1,5 +1,6 @@
 .gallery {
-  width: 100%;
+  box-sizing: border-box;
+  width: 90%;
   margin: 0 auto;
   -webkit-column-count: 3;
   -moz-column-count: 3;
@@ -9,33 +10,20 @@
   column-width: 33%;
   font-size: 0.6rem;
   font-weight: 200;
-
-  &__card {
-    text-decoration: none;
-    color: black;
+  @media only screen and (max-width: 1200px) {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
   }
-  & button {
-    background-color: #d8d8d8;
-    color: white;
-    border-style: none;
+  @media only screen and (max-width: 800px) {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+
+  &__error {
     font-size: 2rem;
-    padding: 0rem 0.5rem;
-    font-style: italic;
-  }
-
-  &__wrapper {
-    display: inline-block;
-    margin: 2.5rem 1rem;
-  }
-  &__title {
-    font-family: "Nunito", sans-serif;
-    color: rgb(58, 58, 58);
-    padding-top: 1rem;
-  }
-  &__line {
-    width: 60%;
-    background-color: #d8d8d8;
-    height: 0.1rem;
-    margin: 1rem 0rem;
+    padding: 50rem 0rem;
+    text-align: center;
   }
 }

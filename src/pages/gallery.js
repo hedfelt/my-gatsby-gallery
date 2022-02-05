@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import * as styles from "../styles/gallery.module.scss";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
 import Menu from "../components/Menu/Menu";
-import { Wrapper } from "../components/Wrapper/Wrapper";
 
 export default function Gallery({ data }) {
-  const arts = data.allSanityArt.nodes;
+  const [checkedValues, setCheckedValues] = useState([]);
 
+  const arts = data.allSanityArt.nodes;
   const menus = data.allSanityTags.nodes;
 
+  const handleChecked = (e) => {
+    const { value, checked } = e.target;
+    console.log(value, checked);
+
+    let newCheckedValues = checkedValues.filter((item) => item !== value);
+
+    if (checked) newCheckedValues.push(value);
+
+    setCheckedValues(newCheckedValues);
+  };
+
   return (
-    <Wrapper color="black">
-      <div className={styles.gallery}>
-        <Menu items={menus} />
-        <ImageGallery items={arts} />
-      </div>
-    </Wrapper>
+    <div className={styles.gallery}>
+      <Menu
+        items={menus}
+        onCheckedValue={handleChecked}
+        checkedValues={checkedValues}
+      />
+
+      <ImageGallery items={arts} checkedValues={checkedValues} />
+    </div>
   );
 }
 
@@ -33,6 +47,13 @@ export const query = graphql`
           current
           _key
         }
+        tag {
+          name
+          type
+        }
+        title
+        description
+        alternativetext
       }
     }
 

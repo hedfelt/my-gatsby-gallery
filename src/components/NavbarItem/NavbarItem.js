@@ -2,25 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import * as styles from "./NavbarItem.module.scss";
 
-export const NavbarItem = ({ item }) => {
-  const [active, setActive] = useState(false);
-
-  const clickHandler = () => {
-    setActive(!active);
-  };
-
+export default function NavbarItem({ item, iconChange }) {
   return (
-    <>
-      <li onClick={clickHandler} className={styles.navbar__item}>
-        <Link
-          to={item === "home" ? "/" : "/" + item}
-          className={styles.navbar__link}
-          activeClassName={styles.navbar__activelink}
-        >
-          {item}
-        </Link>
-        <div className={styles.navbar__hoverline}></div>
-      </li>
-    </>
+    <li onClick={iconChange} className={styles.navbaritem}>
+      <Link
+        to={item === "home" ? "/" : "/" + item}
+        className={styles.navbaritem__link}
+        activeClassName={styles.navbaritem__activelink}
+      >
+        {item}
+      </Link>
+    </li>
   );
-};
+}

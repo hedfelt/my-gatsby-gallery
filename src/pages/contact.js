@@ -12,18 +12,13 @@ export default function ContactPage({ data }) {
     setFormSubmitted(true);
   };
 
-  // const contactdata = data.sanityContactPage.contactImage.asset;
-  // console.log(contactdata);
-
   return (
-    <Wrapper color="#393939">
+    <>
       <div className={styles.contact}>
         <div className={styles.contact__leftWrapper}>
           <GatsbyImage
             image={data.sanityContactPage.contactImage.asset.gatsbyImageData}
             alt=""
-            // className={styles.gallery__image}
-            // id="pics"
             style={{ width: "100%" }}
           />
         </div>
@@ -36,7 +31,7 @@ export default function ContactPage({ data }) {
           )}
         </div>
       </div>
-    </Wrapper>
+    </>
   );
 }
 

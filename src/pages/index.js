@@ -11,7 +11,7 @@ export default function IndexPage({ data }) {
     data.sanityLandingpage.images[0].mainImage.asset.gatsbyImageData;
 
   return (
-    <Wrapper color="white">
+    <>
       <div className={styles.home}>
         <div className={styles.home__wrapper}>
           <div className={styles.home__box}>
@@ -44,7 +44,7 @@ export default function IndexPage({ data }) {
         </div>
         <div>HELLO</div>
       </div>
-    </Wrapper>
+    </>
   );
 }
 

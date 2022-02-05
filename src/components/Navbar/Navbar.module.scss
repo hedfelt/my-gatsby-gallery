@@ -4,25 +4,34 @@
   width: 100%;
   justify-content: space-between;
   top: 0;
+  right: 0;
   display: flex;
   z-index: 1000;
   box-sizing: border-box;
   margin: 0rem;
   padding: 2rem;
+
+  z-index: 2000;
   &__logo {
     top: 0;
     left: 0;
     z-index: 1;
     color: black;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     text-align: center;
     font-weight: 700;
-    font-family: "Roboto Condensed", sans-serif;
     display: flex;
     flex-direction: column;
-    font-style: italic;
+    justify-content: center;
     line-height: 1;
     margin: 1rem;
+    font-family: "Roboto Condensed", sans-serif;
+    -moz-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
+    -webkit-transform: scale(1) rotate(0deg) translate(0px, 0px)
+      skew(15deg, 0deg);
+    -o-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
+    -ms-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
+    transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
   }
   &__button {
     z-index: 10000;
@@ -32,21 +41,22 @@
     align-items: center;
     flex-direction: column;
     background-color: transparent;
-    border: 0.1rem solid white;
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
     margin: 1rem;
     &:hover {
-      border-color: #9e86ff;
-      background-color: rgb(48, 47, 47, 0.2);
+      background-color: rgba(179, 179, 179, 0.3);
+      -webkit-transition: background-color 200ms ease-in-out;
+      -ms-transition: background-color 200ms ease-in-out;
+      transition: background-color 200ms ease-in-out;
     }
   }
   &__bar {
     z-index: 10000;
     width: 2.5rem;
     height: 0.2rem;
-    background: white;
+    background: black;
     margin: 0.2rem;
   }
 }

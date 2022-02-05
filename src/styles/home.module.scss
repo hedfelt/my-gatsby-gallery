@@ -2,14 +2,14 @@
   &__wrapper {
     width: 100%;
     display: flex;
-    color: white;
+    color: black;
     font-family: "Lora", serif;
     @media only screen and (max-width: 600px) {
       flex-direction: column;
     }
   }
   &__box {
-    background-color: black;
+    background-color: white;
     width: 50%;
     text-align: center;
     display: flex;
@@ -36,8 +36,7 @@
     position: relative;
     font-size: 4rem;
     font-weight: 200;
-    background: black;
-    opacity: 0.6;
+    background-color: rgb(252, 247, 247, 0.5);
   }
   &__box2 {
     display: grid;
@@ -73,7 +72,7 @@
     margin-left: 1rem;
     width: 0.5rem;
     height: 0.5rem;
-    border: 0.1rem solid white;
+    border: 0.1rem solid black;
     border-left: 0;
     border-top: 0;
     transform: rotate(315deg);
