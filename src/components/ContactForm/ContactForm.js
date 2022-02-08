@@ -7,33 +7,54 @@ export default function ContactForm({ onFormSubmit }) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredMessage, setEnteredMessage] = useState("");
 
-  const nameChangeHandler = (event) => {
+  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
+
+    if (event.target.value.trim() !== "") {
+      setEnteredNameIsValid(true);
+    }
   };
 
-  const emailChangeHandler = (event) => {
+  const nameInputBlurHandler = (event) => {
+    setEnteredNameTouched(true);
+    if (enteredName.trim() == "") {
+      setEnteredNameIsValid(false);
+    }
+  };
+
+  const emailInputChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
 
-  const messageChangeHandler = (event) => {
+  const messageInputChangeHandler = (event) => {
     setEnteredMessage(event.target.value);
   };
-  const submitHandler = (event) => {
+
+  const formSubmissionHandler = (event) => {
     event.preventDefault();
 
-    if (enteredName.trim().length === 0) {
+    setEnteredNameTouched(true);
+
+    if (enteredName.trim() == "") {
+      setEnteredNameIsValid(false);
       return;
     }
 
-    console.log(enteredName, enteredEmail, enteredMessage);
-    setEnteredName("");
-    setEnteredEmail("");
-    setEnteredMessage("");
-    onFormSubmit();
+    setEnteredNameIsValid(true);
   };
 
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+
+  // styling
+  // const nameInputClasses = enteredNameIsValid
+  //   ? styles.form__input__invalid
+  //   : styles.form__input;
+
   return (
-    <form className={styles.form} onSubmit={submitHandler}>
+    <form className={styles.form} onSubmit={formSubmissionHandler}>
       <div className={styles.form__inputwrapper}>
         <label htmlFor="name">NAME</label>
         <input
@@ -41,9 +62,13 @@ export default function ContactForm({ onFormSubmit }) {
           type="text"
           id="name"
           name="name"
-          onChange={nameChangeHandler}
+          onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
           value={enteredName}
         />
+        {nameInputIsInvalid && (
+          <p className={styles.form__error}>Name must not be empty</p>
+        )}
       </div>
       <div className={styles.form__inputwrapper}>
         <label htmlFor="email">EMAIL</label>
@@ -51,7 +76,7 @@ export default function ContactForm({ onFormSubmit }) {
           placeholder="Your Email"
           type="email"
           id="email"
-          onChange={emailChangeHandler}
+          onChange={emailInputChangeHandler}
           value={enteredEmail}
         />
       </div>
@@ -62,8 +87,8 @@ export default function ContactForm({ onFormSubmit }) {
           className={styles.form__textarea}
           placeholder="Your Message"
           maxlenght="500"
+          onChange={messageInputChangeHandler}
           value={enteredMessage}
-          onChange={messageChangeHandler}
         ></textarea>
         {enteredMessage != "" ? (
           <div>{`* ${500 - enteredMessage.length} letters left`}</div>
