@@ -22,22 +22,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
     @media only screen and (max-width: 900px) {
       width: 100%;
     }
   }
   &__header {
     margin-top: 10rem;
-    font-size: clamp(1.5rem, 1.3867rem + 2.718vw, 2rem);
+    font-size: 1.5rem;
     font-weight: 700;
     font-family: "Roboto Condensed", sans-serif;
     font-style: italic;
-    text-decoration: underline;
-
     display: flex;
     flex-direction: column;
-    // color: black;
     color: black;
-    transform: rotate(-2.5deg);
   }
 }
