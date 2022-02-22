@@ -4,58 +4,84 @@ import * as styles from "./ContactForm.module.scss";
 
 export default function ContactForm({ onFormSubmit }) {
   const [enteredName, setEnteredName] = useState("");
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredMessage, setEnteredMessage] = useState("");
-
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
+
+  const [enteredMessage, setEnteredMessage] = useState("");
+  const [enteredMessageTouched, setEnteredMessageTouched] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() != "";
+  const enteredEmailIsValid =
+    enteredEmail.includes("@") && enteredEmail.trim() != "";
+  const enteredMessageIsValid = enteredMessage.trim() != "";
+
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+  const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
+  const messageInputIsInvalid = !enteredMessageIsValid && enteredMessageTouched;
+
+  let formIsValid = false;
+
+  if (enteredNameIsValid && enteredEmailIsValid && enteredMessageIsValid) {
+    formIsValid = true;
+  }
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
-
-    if (event.target.value.trim() !== "") {
-      setEnteredNameIsValid(true);
-    }
   };
-
   const nameInputBlurHandler = (event) => {
     setEnteredNameTouched(true);
-    if (enteredName.trim() == "") {
-      setEnteredNameIsValid(false);
-    }
   };
 
   const emailInputChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
+  const emailInputBlurHandler = (event) => {
+    setEnteredEmailTouched(true);
+  };
 
   const messageInputChangeHandler = (event) => {
     setEnteredMessage(event.target.value);
+  };
+  const messageInputBlurHandler = (event) => {
+    setEnteredMessageTouched(true);
   };
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
     setEnteredNameTouched(true);
+    setEnteredEmailTouched(true);
+    setEnteredMessageTouched(true);
 
-    if (enteredName.trim() == "") {
-      setEnteredNameIsValid(false);
+    if (!enteredNameIsValid || !enteredEmail || !enteredMessage) {
       return;
     }
 
-    setEnteredNameIsValid(true);
+    setEnteredName("");
+    setEnteredNameTouched(false);
+    setEnteredEmail("");
+    setEnteredEmailTouched(false);
+    setEnteredMessage("");
+    setEnteredMessageTouched(false);
   };
 
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+  const nameInputClasses = nameInputIsInvalid
+    ? styles.form__input__invalid
+    : styles.form__input;
 
-  // styling
-  // const nameInputClasses = enteredNameIsValid
-  //   ? styles.form__input__invalid
-  //   : styles.form__input;
+  const emailInputClasses = emailInputIsInvalid
+    ? styles.form__input__invalid
+    : styles.form__input;
+
+  const messageInputClasses = messageInputIsInvalid
+    ? styles.form__input__invalid
+    : styles.form__input;
 
   return (
     <form className={styles.form} onSubmit={formSubmissionHandler}>
-      <div className={styles.form__inputwrapper}>
+      <div className={nameInputClasses}>
         <label htmlFor="name">NAME</label>
         <input
           placeholder="Full Name"
@@ -67,10 +93,10 @@ export default function ContactForm({ onFormSubmit }) {
           value={enteredName}
         />
         {nameInputIsInvalid && (
-          <p className={styles.form__error}>Name must not be empty</p>
+          <p className={styles.form__error}>Name must not be empty.</p>
         )}
       </div>
-      <div className={styles.form__inputwrapper}>
+      <div className={emailInputClasses}>
         <label htmlFor="email">EMAIL</label>
         <input
           placeholder="Your Email"
@@ -78,25 +104,30 @@ export default function ContactForm({ onFormSubmit }) {
           id="email"
           onChange={emailInputChangeHandler}
           value={enteredEmail}
+          onBlur={emailInputBlurHandler}
         />
-      </div>
-
-      <div className={styles.form__inputwrapper}>
-        <label>MESSAGE</label>
-        <textarea
-          className={styles.form__textarea}
-          placeholder="Your Message"
-          maxlenght="500"
-          onChange={messageInputChangeHandler}
-          value={enteredMessage}
-        ></textarea>
-        {enteredMessage != "" ? (
-          <div>{`* ${500 - enteredMessage.length} letters left`}</div>
-        ) : (
-          <div>{"* 500 letters left"}</div>
+        {emailInputIsInvalid && (
+          <p className={styles.form__error}>Please enter a valid email.</p>
         )}
       </div>
-      <button className={styles.form__button} type="submit">
+
+      <div className={messageInputClasses}>
+        <label>MESSAGE</label>
+        <textarea
+          placeholder="Your Message"
+          onChange={messageInputChangeHandler}
+          value={enteredMessage}
+          onBlur={messageInputBlurHandler}
+        ></textarea>
+        {messageInputIsInvalid && (
+          <p className={styles.form__error}>Message must not be empty.</p>
+        )}
+      </div>
+      <button
+        className={styles.form__button}
+        type="submit"
+        disabled={!formIsValid}
+      >
         SUBMIT
       </button>
     </form>
