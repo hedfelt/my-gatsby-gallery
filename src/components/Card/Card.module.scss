@@ -1,57 +1,16 @@
 .card {
-  display: inline-block;
-  font-family: "Nunito", sans-serif;
-  margin: 2rem;
+  width: 100%;
+  padding-bottom: 2rem;
+  &__dropshadow {
+    box-shadow: 0 0 4px 0px rgb(0 0 0 / 18%);
+    -webkit-box-shadow: 0 0 4px 0px rgb(0 0 0 / 18%);
+  }
 
   &__image {
-    display: inline-block;
     width: 100%;
   }
-
   &__imagewrapper {
+    width: 100%;
     overflow: hidden;
-  }
-
-  & button {
-    height: 100%;
-    padding: 0.5rem;
-    border-width: 0.5px;
-    line-height: 0.9;
-    border-style: solid;
-    background-color: white;
-    color: grey;
-    border-color: grey;
-    font-size: 0.8rem;
-    cursor: pointer;
-    letter-spacing: 0.1rem;
-    font-weight: 400;
-  }
-
-  &__link {
-    text-decoration: none;
-    color: black;
-    &:hover button {
-      background-color: black;
-      color: white;
-      border-color: black;
-    }
-  }
-
-  &__wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0rem;
-  }
-  & h2,
-  & h3 {
-    font-size: 1rem;
-  }
-  & h2 {
-    font-weight: 600;
-  }
-
-  & h3 {
-    color: grey;
-    font-weight: 400;
   }
 }

@@ -1,9 +1,9 @@
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 100vh;
-  background-color: white;
-  color: black;
+  background-color: #fe390f;
+  opacity: 0.2;
   z-index: 2;
   width: 100%;
   &__list {

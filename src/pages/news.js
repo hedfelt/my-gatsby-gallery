@@ -4,19 +4,14 @@ import * as styles from "../styles/news.module.scss";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { GatsbyImage } from "gatsby-plugin-image";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
-import { Wrapper } from "../components/Wrapper/Wrapper";
 
 export default function News({ data }) {
   const blogposts = data.allSanityBlogPost.nodes;
 
-  console.log(blogposts);
-
   return (
-    <Wrapper>
-      <div className={styles.news}>
-        <ImageGallery items={blogposts} />
-      </div>
-    </Wrapper>
+    <div className={styles.news}>
+      {/* <ImageGallery items={blogposts} /> */}
+    </div>
   );
 }
 

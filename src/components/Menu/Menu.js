@@ -3,33 +3,33 @@ import React, { useState, useRef, useEffect } from "react";
 import * as styles from "./Menu.module.scss";
 
 export default function Menu({ items, onCheckedValue, checkedValues }) {
-  const [selectedTab, setSelectedTab] = useState();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(null);
 
   const options = items.map((item) => item.type);
 
   const menuRef = useRef();
 
-  const clickOptionsHandler = () => {
-    setShowOptions(!showOptions);
+  const clickHandler = (item) => {
+    if (item === selectedTab) {
+      setSelectedTab(null);
+    } else {
+      setSelectedTab(item);
+    }
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClicks);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClicks);
+    const checkIfClickedOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setSelectedTab(null);
+      }
     };
-  }, [menuOpen]);
 
-  const handleOutsideClicks = (event) => {
-    if (
-      menuOpen &&
-      menuRef.current &&
-      !menuRef.current.contains(event.target)
-    ) {
-      setMenuOpen(false);
-    }
-  };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [menuRef]);
 
   const uniqOptions = [...new Set(options)];
   const top = {
@@ -56,25 +56,16 @@ export default function Menu({ items, onCheckedValue, checkedValues }) {
     },
   };
 
-  const clickHandler = (item) => {
-    setMenuOpen(!menuOpen);
-    setSelectedTab(item);
-  };
-
   const arrow_variants = [top, bottom];
 
   return (
-    <>
+    <div ref={menuRef}>
       <nav className={styles.filter}>
         <ul>
           {uniqOptions.map((item) => (
-            <li
+            <motion.li
               key={item.name}
-              className={
-                item.type === selectedTab
-                  ? styles.filter__selected
-                  : styles.filter__unSelected
-              }
+              className={styles.filter__navbox}
               onClick={() => clickHandler(item)}
             >
               {item}
@@ -84,36 +75,36 @@ export default function Menu({ items, onCheckedValue, checkedValues }) {
                     key={variant}
                     className={styles.filter__bar}
                     variants={variant}
-                    initial={menuOpen ? "closed" : "open"}
-                    animate={menuOpen ? "opened" : "closed"}
+                    initial={item === selectedTab ? "closed" : "open"}
+                    animate={item === selectedTab ? "opened" : "closed"}
                   ></motion.div>
                 ))}
               </motion.div>
-              {item === selectedTab ? (
+              {item === selectedTab && (
                 <motion.div
                   className={styles.filter__underline}
                   layoutId="underline"
                 />
-              ) : null}
-            </li>
+              )}
+            </motion.li>
           ))}
         </ul>
       </nav>
-      <div className={styles.filter__dropdown}>
-        <AnimatePresence exitBeforeEnter>
-          <div
-            key={selectedTab ? selectedTab : "empty"}
-            animate={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 20 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.15 }}
-            className={styles.filter__list}
-          >
+      <AnimatePresence exitBeforeEnter>
+        <motion.div layoutId="box" className={styles.filter__dropdown}>
+          <div className={styles.filter__box}>
             {items.map((item) => {
               return (
-                <div key={item.id}>
+                <motion.div key={item.id}>
                   {item.type === selectedTab && (
-                    <div key={item.name} className={styles.filter__option}>
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className={styles.filter__option}
+                    >
                       <input
                         value={item.name}
                         name={item.name}
@@ -123,14 +114,14 @@ export default function Menu({ items, onCheckedValue, checkedValues }) {
                         checked={checkedValues.includes(item.name)}
                       />
                       <label htmlFor={item.name}>{item.name}</label>
-                    </div>
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </AnimatePresence>
-      </div>
-    </>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }

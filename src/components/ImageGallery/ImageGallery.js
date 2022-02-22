@@ -8,6 +8,7 @@ export default function ImageGallery({ items, checkedValues }) {
       art.tag.map((tag) => tag.name).includes(checkedValue)
     )
   );
+
   return (
     <div className={styles.gallery}>
       {filteredArt.length ? (

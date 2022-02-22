@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
-
 import Modal from "../Modal/Modal";
+import * as styles from "./Layout.module.scss";
 
 export default function Layout({ children }) {
   const [showModal, setShowModal] = useState(false);

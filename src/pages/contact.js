@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ContactForm from "../components/ContactForm/ContactForm";
 import * as styles from "../styles/contact.module.scss";
-import { Wrapper } from "../components/Wrapper/Wrapper";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
@@ -13,25 +12,20 @@ export default function ContactPage({ data }) {
   };
 
   return (
-    <>
-      <div className={styles.contact}>
-        <div className={styles.contact__leftWrapper}>
-          <GatsbyImage
-            image={data.sanityContactPage.contactImage.asset.gatsbyImageData}
-            alt=""
-            style={{ width: "100%" }}
-          />
-        </div>
-        <div className={styles.contact__rightWrapper}>
-          <h1 className={styles.contact__header}>CONTACT ME</h1>
-          {formSubmitted ? (
-            <div>Thank you!</div>
-          ) : (
-            <ContactForm onFormSubmit={formSubmitHandler} />
-          )}
-        </div>
+    <div className={styles.contact}>
+      <div className={styles.contact__imagewrapper}>
+        <GatsbyImage
+          image={data.sanityContactPage.contactImage.asset.gatsbyImageData}
+          alt=""
+          className={styles.contact__image}
+        />
+        <div className={styles.contact__overlaygrid}></div>
       </div>
-    </>
+      <div className={styles.contact__form}>
+        <h1 className={styles.contact__header}>Contact me</h1>
+        <ContactForm onFormSubmit={formSubmitHandler} />
+      </div>
+    </div>
   );
 }
 

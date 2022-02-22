@@ -12,7 +12,6 @@ export default function Gallery({ data }) {
 
   const handleChecked = (e) => {
     const { value, checked } = e.target;
-    console.log(value, checked);
 
     let newCheckedValues = checkedValues.filter((item) => item !== value);
 
@@ -28,8 +27,9 @@ export default function Gallery({ data }) {
         onCheckedValue={handleChecked}
         checkedValues={checkedValues}
       />
-
-      <ImageGallery items={arts} checkedValues={checkedValues} />
+      <div className={styles.gallery__wrapper}>
+        <ImageGallery items={arts} checkedValues={checkedValues} />
+      </div>
     </div>
   );
 }
@@ -47,6 +47,7 @@ export const query = graphql`
           current
           _key
         }
+        dropshadow
         tag {
           name
           type

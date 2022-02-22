@@ -1,32 +1,57 @@
 .navbar {
-  font-family: "nunito", sans-serif;
+  z-index: 100000;
+  background-color: transparent;
+  font-weight: 700;
   width: 100%;
-  justify-content: space-between;
+  position: fixed;
+  height: 5rem;
   display: flex;
-  box-sizing: border-box;
-  margin: 0rem;
-  padding: 2rem;
-  z-index: 10000;
-  &__logo {
-    z-index: 10000;
-    color: black;
-    font-size: 1.3rem;
-    text-align: center;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 1rem;
-    font-family: "Roboto Condensed", sans-serif;
-    -moz-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
-    -webkit-transform: scale(1) rotate(0deg) translate(0px, 0px)
-      skew(15deg, 0deg);
-    -o-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
-    -ms-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
-    transform: scale(1) rotate(0deg) translate(0px, 0px) skew(15deg, 0deg);
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    justify-content: flex-end;
   }
+
+  &__logo {
+    padding: 0rem 0.5rem;
+    font-family: "Open Sans Condensed", sans-serif;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :first-child {
+      padding-right: 0.3rem;
+      @media only screen and (max-width: 1000px) {
+        padding: 0;
+      }
+    }
+    :last-child {
+      padding-right: 0.3rem;
+      @media only screen and (max-width: 1000px) {
+        padding: 0;
+      }
+    }
+    @media only screen and (max-width: 1000px) {
+      color: #ffffff;
+    }
+    @media only screen and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5rem;
+      line-height: 0.9;
+      padding-right: 1rem;
+    }
+  }
+  // &__logoOpen {
+  //   color: #ffffff;
+  // }
+
   &__button {
-    z-index: 1000;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -36,19 +61,17 @@
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    margin: 1rem;
-    &:hover {
-      background-color: rgba(179, 179, 179, 0.3);
-      -webkit-transition: background-color 200ms ease-in-out;
-      -ms-transition: background-color 200ms ease-in-out;
-      transition: background-color 200ms ease-in-out;
-    }
   }
   &__bar {
-    z-index: 10000;
-    width: 2.5rem;
-    height: 0.2rem;
-    background: black;
-    margin: 0.2rem;
+    width: 2.3rem;
+    height: 0.3rem;
+    background-color: black;
+    margin: 0.15rem;
+    @media only screen and (max-width: 1000px) {
+      background-color: #ffffff;
+    }
+  }
+  &__barOpen {
+    background-color: #ffffff;
   }
 }

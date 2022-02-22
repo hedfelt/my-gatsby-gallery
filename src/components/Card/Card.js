@@ -6,26 +6,21 @@ import { motion } from "framer-motion";
 
 export default function Card({ art }) {
   return (
-    <div className={styles.card}>
+    <div id={art.slug.current} className={styles.card}>
       <TransitionLink
-        to={"/artwork/" + art.slug.current}
+        to={"/gallery/" + art.slug.current}
         className={styles.card__link}
       >
-        <div className={styles.card__imagewrapper}>
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <GatsbyImage
-              image={art.mainImage.asset.gatsbyImageData}
-              alt={art.alternativetext}
-              className={styles.card__image}
-            />
-          </motion.div>
-        </div>
-        <div className={styles.card__wrapper}>
-          <div>
-            <h2>{art.title}</h2>
-            <h3>{art.description}</h3>
+        <div className={art.dropshadow && styles.card__dropshadow}>
+          <div className={styles.card__imagewrapper}>
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <GatsbyImage
+                image={art.mainImage.asset.gatsbyImageData}
+                alt={art.alternativetext}
+                className={styles.card__image}
+              />
+            </motion.div>
           </div>
-          <button className={styles.card__button}>See more</button>
         </div>
       </TransitionLink>
     </div>
