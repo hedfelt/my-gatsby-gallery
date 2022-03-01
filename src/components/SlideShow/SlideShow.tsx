@@ -5,48 +5,12 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import * as styles from "./SlideShow.module.scss";
 
-const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-      y: 0,
-    };
-  },
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-    y: 0,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-      y: 0,
-    };
-  },
-};
-
-const selectorVariant = {
-  active: { backgroundColor: "#000" },
-  inactive: { backgroundColor: "#FFF" },
-};
-
-const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
-
-export default function SlideShow({ images }) {
+export default function SlideShow({ images, dropshadow }) {
   const [[page, direction], setPage] = useState([0, 0]);
 
   const paginate = (newDirection: number) => {
     const min = 0;
     const max = images.length - 1;
-    console.log(max);
-    console.log(newDirection);
     if (page == max && newDirection > 0) {
       setPage([min, newDirection]);
     } else if (page == min && newDirection < 0) {
@@ -56,10 +20,48 @@ export default function SlideShow({ images }) {
     }
   };
 
+  const variants = {
+    enter: (direction: number) => {
+      return {
+        x: direction > 0 ? 1000 : -1000,
+        opacity: 0,
+        y: 0,
+      };
+    },
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      y: 0,
+    },
+    exit: (direction: number) => {
+      return {
+        zIndex: 0,
+        x: direction < 0 ? 1000 : -1000,
+        opacity: 0,
+        y: 0,
+      };
+    },
+  };
+
+  const selectorVariant = {
+    active: { backgroundColor: "#000" },
+    inactive: { backgroundColor: "#D7D7D7" },
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
   const arrowClasses =
     images.length === 1
       ? `${styles.slideshow__arrow} ${styles.slideshow__arrow__disabled}`
       : styles.slideshow__arrow;
+
+  const imagewrapperClasses = dropshadow
+    ? `${styles.slideshow__imgwrapper} ${styles.slideshow__dropshadow}`
+    : styles.slideshow__imgwrapper;
 
   return (
     <div className={styles.wrapper}>
@@ -71,7 +73,7 @@ export default function SlideShow({ images }) {
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={page}
-              className={styles.slideshow__imgwrapper}
+              className={imagewrapperClasses}
               custom={direction}
               variants={variants}
               initial="enter"

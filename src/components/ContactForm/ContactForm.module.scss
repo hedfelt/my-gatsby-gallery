@@ -1,6 +1,7 @@
 .form {
   margin-top: 2rem;
   width: 100%;
+  font-family: "Poppins", sans-serif;
 
   &__input {
     padding-top: 4rem;
@@ -9,6 +10,7 @@
     color: red;
     position: absolute;
     padding-top: 0.5rem;
+    font-size: 0.9rem;
   }
 
   & input {
@@ -17,33 +19,30 @@
     display: block;
     background-color: transparent;
     border-style: none;
-    border-bottom: 0.05rem solid black;
+    border-bottom: 0.05rem solid #26262d;
     padding: 1rem 0.5rem;
     font-size: 1rem;
     font-weight: 400;
-    color: black;
+    color: #26262d;
     margin: 0.5rem 0rem;
     &:focus {
       outline: none !important;
-      border-bottom: 0.05rem solid black;
+      border-bottom: 0.05rem solid #26262d;
       background-color: rgb(0, 0, 0, 0.1);
     }
   }
   & label {
-    font-size: 2rem;
+    font-size: 0.9rem;
     padding: 0.5rem 0rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: black;
-    font-style: italic;
+    font-weight: 400;
+    color: #26262d;
   }
   & textarea {
     display: block;
-    font-family: "Open Sans", sans-serif;
-
+    font-family: "Poppins", sans-serif;
     width: 100%;
     border-style: none;
-    border-bottom: 0.05rem solid black;
+    border-bottom: 0.05rem solid #26262d;
     height: 10rem;
     padding: 1rem 0.5rem;
     font-size: 1rem;
@@ -53,7 +52,7 @@
 
     &:focus {
       outline: none !important;
-      border-bottom: 0.05rem solid black;
+      border-bottom: 0.05rem solid #26262d;
       background-color: rgb(0, 0, 0, 0.1);
     }
   }
@@ -73,7 +72,7 @@
   }
 
   &__button {
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: "Poppins", sans-serif;
     margin-top: 4rem;
     width: 100%;
     padding: 2rem 0rem;
@@ -81,9 +80,10 @@
     line-height: 0.9;
     border-style: solid;
     background-color: white;
-    color: black;
-    border-color: black;
-    font-size: 2rem;
+    border-radius: 0.3rem;
+    color: #26262d;
+    border-color: #26262d;
+    font-size: 1rem;
     cursor: pointer;
     letter-spacing: 0.1rem;
     font-weight: 400;
@@ -91,8 +91,8 @@
     &:disabled:hover,
     &:disabled:active {
       background-color: transparent;
-      color: black(83, 83, 83);
-      border-color: black;
+      color: grey;
+      border-color: grey;
     }
   }
 }

@@ -1,18 +1,23 @@
 .modal {
+  width: 100%;
+  z-index: 2000;
   position: fixed;
   top: 0;
+  left: 0;
   height: 100vh;
-  background-color: #fe390f;
-  opacity: 0.2;
-  z-index: 2;
-  width: 100%;
+  background-color: #fcfbfa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &__list {
+    list-style-type: none;
+    padding-top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100%;
-    list-style-type: none;
-    padding: 0;
+    @media only screen and (max-width: 800px) {
+      align-items: center;
+    }
   }
 }

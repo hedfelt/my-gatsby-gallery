@@ -1,20 +1,17 @@
 .home {
   width: 100%;
-  background-color: white;
-  width: 100%;
   display: flex;
-  color: black;
+  flex-direction: column;
 
-  @media only screen and (max-width: 1000px) {
-    display: grid;
-    color: white;
+  &__landingpageWrapper {
+    display: flex;
+    width: 100%;
+    @media only screen and (max-width: 1000px) {
+      display: grid;
+    }
   }
 
-  &__link {
-    text-decoration: none;
-    color: black;
-  }
-  &__rightwrapper {
+  &__imagewrapper {
     display: grid;
     width: 50%;
     height: 100vh;
@@ -24,8 +21,9 @@
       z-index: 100;
     }
   }
-
   &__leftwrapper {
+    padding-top: 3rem;
+    background-color: white;
     width: 50%;
     text-align: center;
     display: flex;
@@ -37,6 +35,7 @@
       grid-area: 1/1;
       width: 100%;
       z-index: 200;
+      background-color: transparent;
     }
   }
 
@@ -47,6 +46,7 @@
     position: relative;
     font-size: 4rem;
     font-weight: 200;
+
     @media only screen and (max-width: 1000px) {
       width: 100%;
       background-color: white;
@@ -59,34 +59,56 @@
   }
 
   &__header {
-    font-family: "Open Sans", sans-serif;
+    font-family: "glossyDisplay";
+    text-transform: uppercase;
+    font-weight: 200;
     line-height: 0.9;
-    font-size: clamp(4rem, 0.8929rem + 4vw, 5rem);
-    font-weight: 600;
-    font-style: italic;
+    font-size: 7rem;
     margin: auto;
-    cursor: pointer;
+    @media only screen and (max-width: 1400px) {
+      font-size: 6rem;
+    }
+    @media only screen and (max-width: 1200px) {
+      font-size: 5rem;
+    }
+    @media only screen and (max-width: 1000px) {
+      font-size: 7rem;
+    }
+    @media only screen and (max-width: 800px) {
+      font-size: 5rem;
+    }
+    @media only screen and (max-width: 600px) {
+      font-size: 4rem;
+    }
   }
 
   &__subheader {
-    font-family: "Open Sans", sans-serif;
-
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
     cursor: pointer;
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin: 0rem 0rem 5rem 0rem;
+    font-size: 1.2rem;
+    padding-bottom: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   &__arrow {
     margin-left: 1rem;
+    margin-right: 0.1rem;
     width: 0.5rem;
     height: 0.5rem;
-    border: 0.1rem solid black;
+    border-style: solid;
+    border-width: 0.1rem;
     border-left: 0;
     border-top: 0;
-    transform: rotate(315deg);
     border-radius: 0.1rem;
+  }
+  &__link {
+    text-decoration: none;
+    font-weight: 200;
+    color: #26262d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

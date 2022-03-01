@@ -1,20 +1,48 @@
 .navbaritem {
   list-style-type: none;
-  padding: 0.5rem 0rem;
+  padding: 1.3rem 0rem;
+  @media only screen and (max-width: 1000px) {
+    padding: 2.5rem 0rem;
+  }
+  @media only screen and (max-width: 600px) {
+    padding: 3rem 0rem;
+  }
+  ::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    border-radius: 5px;
+    height: 1px;
+
+    bottom: 0;
+    left: 0;
+    background: currentcolor;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  :hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
   &__link {
-    color: black;
+    color: #26262d;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 4rem;
     text-decoration: none;
-    letter-spacing: 0rem;
-    display: inline-block;
+    letter-spacing: 0.1rem;
     position: relative;
     margin: 0.7rem 0rem;
-    font-family: "Open Sans", sans-serif;
-  }
-  &__activelink {
-    transform: skew(10deg);
+
+    font-family: "glossyDisplay";
+    font-weight: 200;
+
+    @media only screen and (max-width: 1000px) {
+      font-size: 3rem;
+    }
+    @media only screen and (max-width: 600px) {
+      font-size: 2rem;
+    }
   }
 }

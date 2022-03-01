@@ -1,26 +1,45 @@
 .contact {
   width: 100%;
-  color: black;
+  color: #26262d;
   display: flex;
   justify-content: flex-end;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+
   @media only screen and (max-width: 800px) {
     flex-direction: column;
   }
+
   &__form {
     background-color: white;
-
     box-sizing: border-box;
-    padding: 2rem;
-    padding-top: 10rem;
-
+    padding: 10rem 7rem 5rem 7rem;
     display: flex;
     flex-direction: column;
     z-index: 2000;
     width: 50%;
-    @media only screen and (max-width: 800px) {
-      width: 100%;
+    & h1 {
+      font-size: 5rem;
+      font-family: "glossyDisplay";
+      padding-top: 5rem;
+      font-weight: 200;
     }
+    @media only screen and (max-width: 1200px) {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      & h1 {
+        padding-top: 8rem;
+        font-size: 4rem;
+      }
+    }
+
+    @media only screen and (max-width: 800px) {
+      padding: 5rem 0;
+      width: 80%;
+      margin: 0 auto;
+    }
+    // @media only screen and (max-width: 800px) {
+
+    // }
   }
   &__overlaygrid {
     grid-area: 1/1;
@@ -29,7 +48,6 @@
     position: relative;
     font-size: 4rem;
     font-weight: 200;
-    background-color: rgb(252, 247, 247, 0.5);
   }
   &__imagewrapper {
     display: grid;
@@ -44,13 +62,5 @@
   }
   &__image {
     grid-area: 1/1;
-  }
-
-  &__header {
-    font-family: "Open Sans Condensed", sans-serif;
-    text-transform: uppercase;
-    font-size: 3rem;
-    font-weight: 200;
-    cursor: pointer;
   }
 }

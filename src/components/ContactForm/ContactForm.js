@@ -112,8 +112,9 @@ export default function ContactForm({ onFormSubmit }) {
       </div>
 
       <div className={messageInputClasses}>
-        <label>MESSAGE</label>
+        <label htmlFor="message">MESSAGE</label>
         <textarea
+          id="message"
           placeholder="Your Message"
           onChange={messageInputChangeHandler}
           value={enteredMessage}
