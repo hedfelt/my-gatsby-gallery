@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import * as styles from "./Modal.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
-import { createPortal } from "react-dom";
 import NavbarItem from "../NavbarItem/NavbarItem";
 
 export default function Modal({ showModal, iconChange }) {
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth > 800);
+  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth > 800) setIsMobile(false);
-      else setIsMobile(true);
+  useLayoutEffect(() => {
+    if (typeof window !== undefined) {
+      const handleResize = () => setIsMobile(window.innerWidth <= 800);
+      window.addEventListener("resize", handleResize);
+      handleResize();
+
+      return () => window.removeEventListener("resize", handleResize);
     }
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const container = {
@@ -54,7 +52,7 @@ export default function Modal({ showModal, iconChange }) {
     },
   };
 
-  return createPortal(
+  return (
     <AnimatePresence exitBeforeEnter>
       {showModal && (
         <motion.nav
@@ -84,8 +82,6 @@ export default function Modal({ showModal, iconChange }) {
           </motion.ul>
         </motion.nav>
       )}
-    </AnimatePresence>,
-
-    document.getElementById("modal-root")
+    </AnimatePresence>
   );
 }
