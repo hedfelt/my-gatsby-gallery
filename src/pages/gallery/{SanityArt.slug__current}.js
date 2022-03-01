@@ -1,36 +1,39 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { graphql, Link } from "gatsby";
-import TransitionLink from "gatsby-plugin-transition-link";
-import { GatsbyImage } from "gatsby-plugin-image";
 import * as styles from "../../styles/gallery.module.scss";
 import SlideShow from "../../components/SlideShow/SlideShow";
+import { Footer } from "../../components/Footer/Footer";
 
-// import { TransitionState } from "gatsby-plugin-transition-link";
-import { StaticImage } from "gatsby-plugin-image";
+import { Seo } from "../../components/Seo";
 
 const SingleArtwork = ({ data }) => {
   const sanitydata = data.sanityArt;
+
   return (
     <div className={styles.singleartwork}>
-      <div className={styles.singleartwork__wrapper}>
-        <SlideShow images={sanitydata.imagesGallery} />
-      </div>
-      <div className={styles.singleartwork__info}>
-        <h1 className={styles.singleartwork__header}>
-          {sanitydata.title + " , " + sanitydata.completedAt}
-        </h1>
+      <Seo title={sanitydata.title} />
+      <div className={styles.singleartwork__mainwrapper}>
+        <div className={styles.singleartwork__wrapper}>
+          <SlideShow
+            dropshadow={sanitydata.dropshadow}
+            images={sanitydata.imagesGallery}
+          />
+        </div>
+        <div className={styles.singleartwork__info}>
+          <h1 className={styles.singleartwork__header}>
+            {sanitydata.title + " , " + sanitydata.completedAt}
+          </h1>
+          <Link className={styles.singleartwork__return} to={"/gallery/"}>
+            Return to Gallery
+          </Link>
 
-        <Link
-          to={"/gallery#" + sanitydata.slug.current}
-          className={styles.singleartwork__back}
-        >
-          Back to Gallery
-        </Link>
-        <h2 className={styles.singleartwork__subheader}>Product details</h2>
-        <h3 className={styles.singleartwork__details}>
-          Watercolor on paper, ink
-        </h3>
+          <h2 className={styles.singleartwork__details}>
+            {sanitydata.mediums}
+          </h2>
+          <h2 className={styles.singleartwork__details}>{sanitydata.size}</h2>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
@@ -45,11 +48,14 @@ export const query = graphql`
       slug {
         current
       }
+      mediums
+      size
       mainImage {
         asset {
           gatsbyImageData(placeholder: BLURRED)
         }
       }
+      dropshadow
       imagesGallery {
         asset {
           gatsbyImageData(width: 400, placeholder: DOMINANT_COLOR, fit: FILL)

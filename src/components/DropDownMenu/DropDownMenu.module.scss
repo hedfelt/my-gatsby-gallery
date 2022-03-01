@@ -41,7 +41,7 @@
   &__bar {
     height: 0.5rem;
     width: 0.1rem;
-    background: black;
+    background: #26262d;
     border-radius: 2px;
   }
 
@@ -64,7 +64,7 @@
     padding: 1em 2em 1em 2em;
 
     &:hover {
-      color: black;
+      color: #26262d;
     }
   }
   & label {
@@ -91,7 +91,7 @@
       background-color: rgb(226, 224, 224);
     }
     &:checked + label::before {
-      background-color: black;
+      background-color: #26262d;
       content: "\002714";
       display: flex;
       justify-content: center;

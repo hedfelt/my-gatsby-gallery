@@ -1,16 +1,45 @@
 .card {
-  width: 100%;
-  padding-bottom: 2rem;
-  &__dropshadow {
-    box-shadow: 0 0 4px 0px rgb(0 0 0 / 18%);
-    -webkit-box-shadow: 0 0 4px 0px rgb(0 0 0 / 18%);
+  font-family: "Poppins", sans-serif;
+  width: 33%;
+  padding: 2rem 1.5rem 4rem 1.5rem;
+  text-transform: uppercase;
+  @media only screen and (max-width: 1200px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 800px) {
+    width: 100%;
   }
 
   &__image {
     width: 100%;
   }
+
   &__imagewrapper {
-    width: 100%;
     overflow: hidden;
+  }
+  &__dropshadow {
+    box-shadow: 0 0 4px 0px rgb(0 0 0 / 18%);
+    -webkit-box-shadow: 0 0 4px 0px rgb(0 0 0 / 18%);
+  }
+  &__link {
+    text-decoration: none;
+    color: #26262d;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1.5px solid rgb(34, 34, 34);
+  }
+
+  &__header {
+    padding: 2rem 0;
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+  &__header1 {
+    padding: 2rem 0;
+    font-weight: 600;
+    font-size: 0.75rem;
   }
 }

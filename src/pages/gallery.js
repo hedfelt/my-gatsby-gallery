@@ -3,7 +3,11 @@ import { graphql } from "gatsby";
 import * as styles from "../styles/gallery.module.scss";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
 import Menu from "../components/Menu/Menu";
-
+import { Link } from "gatsby";
+import { motion } from "framer-motion";
+import TransitionLink from "gatsby-plugin-transition-link";
+import { Footer } from "../components/Footer/Footer";
+import { Seo } from "../components/Seo";
 export default function Gallery({ data }) {
   const [checkedValues, setCheckedValues] = useState([]);
 
@@ -20,16 +24,37 @@ export default function Gallery({ data }) {
     setCheckedValues(newCheckedValues);
   };
 
+  const linkVariant = {
+    rest: {
+      x: 0,
+    },
+    hover: {
+      x: 2.5,
+    },
+  };
+  const arrowVariant = {
+    rest: {
+      x: 0,
+      rotate: "45deg",
+    },
+    hover: {
+      x: -2.5,
+      rotate: "45deg",
+    },
+  };
   return (
     <div className={styles.gallery}>
-      <Menu
-        items={menus}
-        onCheckedValue={handleChecked}
-        checkedValues={checkedValues}
-      />
+      <Seo title={"gallery page"} />
+
       <div className={styles.gallery__wrapper}>
+        <Menu
+          items={menus}
+          onCheckedValue={handleChecked}
+          checkedValues={checkedValues}
+        />
         <ImageGallery items={arts} checkedValues={checkedValues} />
       </div>
+      <Footer />
     </div>
   );
 }
@@ -40,7 +65,11 @@ export const query = graphql`
       nodes {
         mainImage {
           asset {
-            gatsbyImageData(placeholder: DOMINANT_COLOR)
+            gatsbyImageData(
+              placeholder: DOMINANT_COLOR
+              aspectRatio: 0.8
+              layout: FULL_WIDTH
+            )
           }
         }
         slug {

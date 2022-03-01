@@ -5,21 +5,32 @@ import { createPortal } from "react-dom";
 import NavbarItem from "../NavbarItem/NavbarItem";
 
 export default function Modal({ showModal, iconChange }) {
-  const navigationList = ["home", "gallery", "news", "contact"];
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth > 800);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 800) setIsMobile(false);
+      else setIsMobile(true);
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const container = {
     hidden: {
       opacity: 1,
-      height: 0,
+      width: "0",
       transition: {
-        ease: "circOut",
+        ease: "easeIn",
         when: "afterChildren",
-        duration: 0.3,
+        duration: 0.4,
       },
     },
     show: {
       opacity: 1,
-      height: "100vh",
+      width: isMobile ? "100%" : "50%",
       transition: {
         ease: "circOut",
         duration: 0.3,
@@ -46,7 +57,7 @@ export default function Modal({ showModal, iconChange }) {
   return createPortal(
     <AnimatePresence exitBeforeEnter>
       {showModal && (
-        <motion.div
+        <motion.nav
           className={styles.modal}
           variants={container}
           initial="hidden"
@@ -58,11 +69,20 @@ export default function Modal({ showModal, iconChange }) {
             className={styles.modal__list}
             variants={item}
           >
-            {navigationList.map((item) => (
-              <NavbarItem iconChange={iconChange} item={item} key={item} />
-            ))}
+            <NavbarItem iconChange={iconChange} item={"home"} key={"home"} />
+            <NavbarItem
+              iconChange={iconChange}
+              item={"gallery"}
+              key={"gallery"}
+            />
+            <NavbarItem iconChange={iconChange} item={"news"} key={"news"} />
+            <NavbarItem
+              iconChange={iconChange}
+              item={"contact"}
+              key={"contact"}
+            />
           </motion.ul>
-        </motion.div>
+        </motion.nav>
       )}
     </AnimatePresence>,
 
