@@ -127,7 +127,7 @@ export default function ContactForm({ onFormSubmit }) {
       <button
         className={styles.form__button}
         type="submit"
-        disabled={!formIsValid}
+        // disabled={!formIsValid}
       >
         SUBMIT
       </button>
