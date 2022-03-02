@@ -1,0 +1,29 @@
+.quote {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 5rem 0rem;
+  &__wrapper {
+    height: 10vh;
+    width: 100%;
+  }
+  &__line {
+    width: 0.1rem;
+    background-color: #26262d;
+    margin: auto;
+  }
+  &__text {
+    font-family: "glossyDisplay";
+
+    margin: auto;
+    width: 50%;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 3rem 0rem;
+    @media (max-width: 1000px) {
+      font-size: 1.5rem;
+      width: 80%;
+    }
+  }
+}

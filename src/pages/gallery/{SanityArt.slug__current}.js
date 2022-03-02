@@ -1,17 +1,18 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import * as styles from "../../styles/gallery.module.scss";
 import SlideShow from "../../components/SlideShow/SlideShow";
 import { Footer } from "../../components/Footer/Footer";
 
 import { Seo } from "../../components/Seo";
+import ReturnLink from "../../components/ReturnLink/ReturnLink";
 
 const SingleArtwork = ({ data }) => {
   const sanitydata = data.sanityArt;
 
   return (
     <div className={styles.singleartwork}>
-      <Seo title={sanitydata.title} />
+      <Seo title={"Hanne Edfelt - " + sanitydata.title} />
       <div className={styles.singleartwork__mainwrapper}>
         <div className={styles.singleartwork__wrapper}>
           <SlideShow
@@ -20,17 +21,11 @@ const SingleArtwork = ({ data }) => {
           />
         </div>
         <div className={styles.singleartwork__info}>
-          <h1 className={styles.singleartwork__header}>
-            {sanitydata.title + " , " + sanitydata.completedAt}
-          </h1>
-          <Link className={styles.singleartwork__return} to={"/gallery/"}>
-            Return to Gallery
-          </Link>
+          <h1>{sanitydata.title + " , " + sanitydata.completedAt}</h1>
+          <ReturnLink to={"/gallery/"}>{" Return to Gallery"}</ReturnLink>
 
-          <h2 className={styles.singleartwork__details}>
-            {sanitydata.mediums}
-          </h2>
-          <h2 className={styles.singleartwork__details}>{sanitydata.size}</h2>
+          <h2>{sanitydata.mediums}</h2>
+          <h2>{sanitydata.size}</h2>
         </div>
       </div>
       <Footer />

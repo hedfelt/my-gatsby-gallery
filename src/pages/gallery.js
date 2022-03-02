@@ -3,9 +3,6 @@ import { graphql } from "gatsby";
 import * as styles from "../styles/gallery.module.scss";
 import ImageGallery from "../components/ImageGallery/ImageGallery";
 import Menu from "../components/Menu/Menu";
-import { Link } from "gatsby";
-import { motion } from "framer-motion";
-import TransitionLink from "gatsby-plugin-transition-link";
 import { Footer } from "../components/Footer/Footer";
 import { Seo } from "../components/Seo";
 export default function Gallery({ data }) {
@@ -24,27 +21,9 @@ export default function Gallery({ data }) {
     setCheckedValues(newCheckedValues);
   };
 
-  const linkVariant = {
-    rest: {
-      x: 0,
-    },
-    hover: {
-      x: 2.5,
-    },
-  };
-  const arrowVariant = {
-    rest: {
-      x: 0,
-      rotate: "45deg",
-    },
-    hover: {
-      x: -2.5,
-      rotate: "45deg",
-    },
-  };
   return (
     <div className={styles.gallery}>
-      <Seo title={"gallery page"} />
+      <Seo title={"Hanne Edfelt - Gallery"} />
 
       <div className={styles.gallery__wrapper}>
         <Menu

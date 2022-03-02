@@ -8,6 +8,8 @@ import * as styles from "./SlideShow.module.scss";
 export default function SlideShow({ images, dropshadow }) {
   const [[page, direction], setPage] = useState([0, 0]);
 
+  const dotList = [...Array(images.length).keys()];
+
   const paginate = (newDirection: number) => {
     const min = 0;
     const max = images.length - 1;
@@ -111,17 +113,16 @@ export default function SlideShow({ images, dropshadow }) {
       </div>
       <div className={styles.wrapper__selectors}>
         {images.length > 1 &&
-          Array(images.length)
-            .fill(0)
-            .map((dot, index) => {
-              return (
-                <motion.div
-                  className={styles.wrapper__selector}
-                  variants={selectorVariant}
-                  animate={index == page ? "active" : "inactive"}
-                ></motion.div>
-              );
-            })}
+          dotList.map((pageindex) => {
+            return (
+              <motion.div
+                key={pageindex}
+                className={styles.wrapper__selector}
+                variants={selectorVariant}
+                animate={pageindex == page ? "active" : "inactive"}
+              ></motion.div>
+            );
+          })}
       </div>
     </div>
   );

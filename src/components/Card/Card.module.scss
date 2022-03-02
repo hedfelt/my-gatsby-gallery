@@ -1,14 +1,7 @@
 .card {
   font-family: "Poppins", sans-serif;
-  width: 33%;
-  padding: 2rem 1.5rem 4rem 1.5rem;
+  width: 100%;
   text-transform: uppercase;
-  @media only screen and (max-width: 1200px) {
-    width: 50%;
-  }
-  @media only screen and (max-width: 800px) {
-    width: 100%;
-  }
 
   &__image {
     width: 100%;

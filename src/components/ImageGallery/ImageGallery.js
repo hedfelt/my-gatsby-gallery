@@ -12,7 +12,11 @@ export default function ImageGallery({ items, checkedValues }) {
   return (
     <div className={styles.gallery}>
       {filteredArt.length ? (
-        filteredArt.map((art, index) => <Card art={art} key={index} />)
+        filteredArt.map((art, index) => (
+          <div className={styles.gallery__card} key={art.title}>
+            <Card art={art} />{" "}
+          </div>
+        ))
       ) : (
         <div className={styles.gallery__error}>Sorry, no results.</div>
       )}

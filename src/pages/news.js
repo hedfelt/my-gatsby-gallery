@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import * as styles from "../styles/news.module.scss";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import TransitionLink from "gatsby-plugin-transition-link";
 import { motion } from "framer-motion";
 import { Footer } from "../components/Footer/Footer";
-import Layout from "../components/Layout/Layout";
+
 import { Seo } from "../components/Seo";
+import ReturnLink from "../components/ReturnLink/ReturnLink";
+import { Quote } from "../components/Quote/Quote";
 
 export default function blog({ data }) {
   const blogposts = data.allSanityBlogPost.nodes;
@@ -74,96 +76,17 @@ export default function blog({ data }) {
     },
   };
 
-  const verticalLine = {
-    rest: {
-      height: 0,
-      transition: {
-        duration: 0.5,
-        type: "tween",
-        ease: "easeIn",
-      },
-    },
-    active: {
-      height: "100%",
-      transition: {
-        duration: 0.5,
-        type: "tween",
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const textVariant = {
-    rest: {
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        delay: 0.1,
-        type: "tween",
-        ease: "easeIn",
-      },
-    },
-    active: {
-      opacity: 1,
-      transition: {
-        delay: 0.1,
-
-        duration: 0.5,
-        type: "tween",
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <div className={styles.articles}>
-      <Seo title={"news page"} />
+      <Seo title={"Hanne Edfelt - News"} />
       <div className={styles.articles__headerwrapper}>
-        <Link className={styles.singleArticle__return} to={"/"}>
-          Return to Homepage
-        </Link>
-        <h1 className={styles.articles__header}>Read the latest news</h1>
+        <ReturnLink to={"/"}>{"Return to Homepage"}</ReturnLink>
+        <h1>Read the latest news</h1>
       </div>
       <div className={styles.grid}>
         {blogposts.map((blog, index) =>
           index == 2 ? (
-            <motion.div
-              variants={textVariant}
-              initial="rest"
-              whileInView="active"
-              viewport={{ once: true }}
-              className={styles.grid__verticallinewrapper}
-            >
-              <div className={styles.grid__verticallineholder}>
-                <motion.div
-                  variants={verticalLine}
-                  initial="rest"
-                  whileInView="active"
-                  viewport={{ once: true }}
-                  className={styles.grid__verticalanimationline}
-                ></motion.div>
-              </div>
-              <motion.div
-                variants={textVariant}
-                initial="rest"
-                whileInView="active"
-                viewport={{ once: true }}
-                className={styles.grid__text}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Curabitur lorem quam, efficitur ac ligula at, tincidunt
-                consequat ligula. In id viverra ipsum.
-              </motion.div>
-              <div className={styles.grid__verticallineholder}>
-                <motion.div
-                  variants={verticalLine}
-                  initial="rest"
-                  whileInView="active"
-                  viewport={{ once: true }}
-                  className={styles.grid__verticalanimationline}
-                ></motion.div>
-              </div>
-            </motion.div>
+            <Quote></Quote>
           ) : (
             <motion.div
               intial="rest"
@@ -231,12 +154,7 @@ export default function blog({ data }) {
                 to={"/news/" + blog.slug.current}
                 className={styles.grid__title}
               >
-                <motion.div
-                  variants={titleMotion}
-                  className={styles.articles__articletitle}
-                >
-                  {blog.title}
-                </motion.div>
+                <motion.div variants={titleMotion}>{blog.title}</motion.div>
               </TransitionLink>
             </motion.div>
           )

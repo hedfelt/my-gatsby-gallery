@@ -9,12 +9,11 @@ import { Footer } from "../../components/Footer/Footer";
 import { motion } from "framer-motion";
 
 import { Seo } from "../../components/Seo";
+import ReturnLink from "../../components/ReturnLink/ReturnLink";
 
 const myPortableTextComponents = {
   block: {
-    paragraph: ({ children }) => (
-      <h1 className={styles.singleArticle__paragraph}>{children}</h1>
-    ),
+    paragraph: ({ children }) => <p>{children}</p>,
     blockquote: ({ children }) => (
       <div className={styles.singleArticle__quoteholder}>
         <div className={styles.singleArticle__verticallineholder}>
@@ -49,9 +48,7 @@ const myPortableTextComponents = {
   },
 
   list: {
-    bullet: ({ children }) => (
-      <ul className={styles.singleArticle__unorderedlist}>{children}</ul>
-    ),
+    bullet: ({ children }) => <ul>{children}</ul>,
     number: ({ children }) => <ol>{children}</ol>,
   },
   listItem: {
@@ -88,11 +85,9 @@ const myPortableTextComponents = {
 export default function SingleArticle({ data }) {
   return (
     <div className={styles.singleArticle}>
-      <Seo title={data.sanityBlogPost.title} />
+      <Seo title={"Hanne Edfelt - " + data.sanityBlogPost.title} />
       <div className={styles.singleArticle__wrapper}>
-        <Link className={styles.singleArticle__return} to={"/news/"}>
-          Return to News
-        </Link>
+        <ReturnLink to={"/news/"}>{"Return to News"}</ReturnLink>
         <h1 className={styles.singleArticle__title}>
           {data.sanityBlogPost.title}
         </h1>

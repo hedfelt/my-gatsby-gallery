@@ -1,27 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as styles from "./DropDownMenu.module.scss";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function DropDownMenu({ title, options }) {
-  const [showOptions, setShowOptions] = useRef(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const menuRef = useRef();
 
-  const clickOptionsHandler = () => {
-    setShowOptions(!showOptions);
-  };
-
   useEffect(() => {
-    // Bind the event listener
     document.addEventListener("mousedown", handleOutsideClicks);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleOutsideClicks);
     };
   }, [menuOpen]);
 
-  //create a function in your component to handleOutsideClicks
   const handleOutsideClicks = (event) => {
     if (
       menuOpen &&
@@ -54,24 +46,6 @@ export default function DropDownMenu({ title, options }) {
       rotate: 130,
       translateX: "0.1rem",
     },
-  };
-
-  const containerVariant = {
-    hidden: {
-      opacity: 0,
-      height: 0,
-      transition: { delayChildren: 0.1, when: "afterChildren" },
-    },
-    show: {
-      opacity: 1,
-      height: "auto",
-      transition: { delayChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 },
   };
 
   const arrow_variants = [top, bottom];
@@ -112,28 +86,6 @@ export default function DropDownMenu({ title, options }) {
           ></motion.div>
         )}
       </motion.div>
-      {/* <AnimatePresence>
-        {menuOpen && (
-          <motion.fieldset
-            className={styles.dropdown__options}
-            variants={containerVariant}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
-            {options.map((item) => (
-              <motion.div
-                variants={itemVariants}
-                key={item}
-                className={styles.dropdown__checkboxcontainer}
-              >
-                <input type="checkbox" id={item} />
-                <label htmlFor={item}>{item}</label>
-              </motion.div>
-            ))}
-          </motion.fieldset>
-        )}
-      </AnimatePresence> */}
     </motion.div>
   );
 }

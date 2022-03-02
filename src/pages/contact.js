@@ -6,15 +6,9 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { Seo } from "../components/Seo";
 
 export default function ContactPage({ data }) {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
-  const formSubmitHandler = () => {
-    setFormSubmitted(true);
-  };
-
   return (
     <div className={styles.contact}>
-      <Seo title={"contact page"} />
+      <Seo title={"Hanne Edfelt - Contact"} />
 
       <div className={styles.contact__imagewrapper}>
         <GatsbyImage
@@ -29,7 +23,7 @@ export default function ContactPage({ data }) {
           CONTACT <br />
           ME
         </h1>
-        <ContactForm onFormSubmit={formSubmitHandler} />
+        <ContactForm />
       </div>
     </div>
   );
