@@ -112,7 +112,7 @@ export default function Menu({ items, onCheckedValue, checkedValues }) {
                       name={item.name}
                       type="checkbox"
                       id={item.name}
-                      onClick={onCheckedValue}
+                      onChange={onCheckedValue}
                       checked={checkedValues.includes(item.name)}
                     />
                     <label htmlFor={item.name}>{item.name}</label>

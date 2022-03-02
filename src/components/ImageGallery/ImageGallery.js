@@ -4,15 +4,17 @@ import Card from "../Card/Card";
 
 export default function ImageGallery({ items, checkedValues }) {
   const filteredArt = items.filter((art) =>
-    checkedValues.every((checkedValue) =>
-      art.tag.map((tag) => tag.name).includes(checkedValue)
-    )
+    checkedValues.length > 0
+      ? checkedValues.some((checkedValue) =>
+          art.tag.map((tag) => tag.name).includes(checkedValue)
+        )
+      : true
   );
 
   return (
     <div className={styles.gallery}>
       {filteredArt.length ? (
-        filteredArt.map((art, index) => (
+        filteredArt.map((art) => (
           <div className={styles.gallery__card} key={art.title}>
             <Card art={art} />{" "}
           </div>
