@@ -9,7 +9,6 @@ export default function NavbarItem({ item, iconChange }) {
       <Link
         to={item === "home" ? "/" : "/" + item}
         className={styles.navbaritem__link}
-        activeClassName={styles.navbaritem__activelink}
       >
         {item}
       </Link>

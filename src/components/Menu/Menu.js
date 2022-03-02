@@ -64,16 +64,17 @@ export default function Menu({ items, onCheckedValue, checkedValues }) {
         <ul>
           {uniqOptions.map((item) => (
             <motion.li
-              key={item.name}
+              key={item}
               className={styles.filter__navbox}
               onClick={() => clickHandler(item)}
             >
               <a href="#">
                 {item}
+
                 <motion.div className={styles.filter__arrow} aria-hidden="true">
-                  {arrow_variants.map((variant) => (
+                  {arrow_variants.map((variant, index) => (
                     <motion.div
-                      key={variant}
+                      key={index}
                       className={styles.filter__bar}
                       variants={variant}
                       initial={item === selectedTab ? "closed" : "open"}
@@ -95,11 +96,11 @@ export default function Menu({ items, onCheckedValue, checkedValues }) {
       <AnimatePresence exitBeforeEnter>
         <motion.div layoutId="box" className={styles.filter__dropdown}>
           <div className={styles.filter__dropdownwrapper}>
-            {items.map((item) => {
+            {items.map((item, index) => {
               return (
                 item.type === selectedTab && (
                   <motion.div
-                    key={item.name}
+                    key={index}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

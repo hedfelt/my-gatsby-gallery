@@ -32,7 +32,7 @@ export default function IndexPage({ data }) {
 
   return (
     <div className={styles.home}>
-      <Seo title={"home page"} lang={"eng"} />
+      <Seo title={"Hanne Edfelt"} lang={"eng"} />
 
       <div className={styles.home__landingpageWrapper}>
         <div className={styles.home__leftwrapper}>

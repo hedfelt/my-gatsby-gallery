@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import * as styles from "./Navbar.module.scss";
 import { motion } from "framer-motion";
 
@@ -12,7 +12,7 @@ export default function Navbar({ showModal, iconChange }) {
     },
     opened: {
       rotate: 45,
-      translateY: 4,
+      translateY: 3.5,
       opacity: 1,
       height: "0.15rem",
     },
@@ -28,7 +28,7 @@ export default function Navbar({ showModal, iconChange }) {
     },
     opened: {
       rotate: -45,
-      translateY: -4,
+      translateY: -3.5,
       opacity: 1,
       width: "2.5rem",
       height: "0.15rem",

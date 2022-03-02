@@ -2,10 +2,23 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   &__error {
+    width: 100%;
+    font-family: "glossyDisplay";
     font-size: 2rem;
-    padding: 50rem 0rem;
+    padding: 10rem 0rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__card {
+    width: 45%;
+    padding-top: 5rem;
+    @media only screen and (max-width: 800px) {
+      width: 100%;
+    }
   }
 }
